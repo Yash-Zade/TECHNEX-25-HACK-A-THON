@@ -2,6 +2,7 @@ package com.teamarc.leaflink.controller;
 
 import com.teamarc.leaflink.dto.*;
 import com.teamarc.leaflink.services.ApplicantService;
+import com.teamarc.leaflink.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +23,7 @@ import java.util.Map;
 public class ApplicantController {
 
     private final ApplicantService applicantService;
+    private final UserService userService;
 
 
     @GetMapping(path = "/profile")
@@ -97,18 +99,6 @@ public class ApplicantController {
     @PostMapping(path = "/sessions/{sessionId}/cancle")
     public ResponseEntity<SessionDTO> cancleSession(@PathVariable Long sessionId) {
         return ResponseEntity.ok(applicantService.cancelSession(sessionId));
-    }
-
-    @PostMapping(path = "/request/mentor")
-    public ResponseEntity<MentorProfileDTO> requestToBeAMentor(@RequestBody OnboardNewMentorDTO mentorRequestDTO) {
-        applicantService.requestMentorOnboard(mentorRequestDTO);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping(path = "/request/employer")
-    public ResponseEntity<EmployerDTO> requestToBeAEmployer(@RequestBody OnBoardNewEmployerDTO employerRequestDTO) {
-        applicantService.requestEmployerOnboard(employerRequestDTO);
-        return ResponseEntity.ok().build();
     }
 
     @GetMapping(path = "/wallet")
