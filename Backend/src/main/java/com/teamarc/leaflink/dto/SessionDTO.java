@@ -1,5 +1,6 @@
 package com.teamarc.leaflink.dto;
 
+import com.teamarc.leaflink.entity.Mentor;
 import com.teamarc.leaflink.entity.enums.SessionType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
@@ -30,6 +31,7 @@ public class SessionDTO {
     private Long applicantId;
 
     private String sessionLink;
+
 
 }
 
