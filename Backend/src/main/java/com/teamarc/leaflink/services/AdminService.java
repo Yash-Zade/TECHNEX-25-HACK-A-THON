@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AdminService {
 
-    @Value("${base.url}")
-    private String baseUrl;
+//    @Value("${base.url}")
+//    private String baseUrl;
 
     private final EmployerService employerService;
     private final MentorService mentorService;

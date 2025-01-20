@@ -28,8 +28,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ApplicantService {
 
-    @Value("${base.url}")
-    private String baseUrl;
+//    @Value("${base.url}")
+//    private String baseUrl;
 
 
     private final ApplicantRepository applicantRepository;
