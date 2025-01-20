@@ -19,6 +19,7 @@ import ChatInteractions from "./components/ChatInteractions/ChatInteractions.jsx
 import JobPostingForm from "./components/Jobs/PostForm.jsx";
 import StartupListingMagazine from "./components/StartUp/StartupSearch.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
+import Startup from "./components/StartUp/Startup.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
         {
           path:"/AdminDashboard",
           element:<AdminDashboard/>
+        },
+        {
+          path:"/startupDetails",
+          element:<Startup/>
         }
 
     ]
