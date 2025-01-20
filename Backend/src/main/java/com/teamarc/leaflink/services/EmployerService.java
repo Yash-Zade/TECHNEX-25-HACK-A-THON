@@ -25,8 +25,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class EmployerService {
 
-    @Value("${base.url}")
-    private String baseUrl;
+//    @Value("${base.url}")
+//    private String baseUrl;
 
     private final EmployerRepository employerRepository;
     private final ModelMapper modelMapper;

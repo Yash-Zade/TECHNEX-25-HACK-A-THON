@@ -55,7 +55,7 @@ const Chat = ({ contact, onClose }) => {
 
   return (
     <motion.div 
-      className="flex-1 flex flex-col h-[600px] bg-gray-900/40 backdrop-blur-xl rounded-lg border border-emerald-700/30"
+      className="  w-full flex flex-col h-[545px] bg-gray-900/40 backdrop-blur-xl rounded-lg border border-emerald-700/30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}

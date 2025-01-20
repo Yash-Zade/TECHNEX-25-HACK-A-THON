@@ -18,7 +18,10 @@ import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
 import ChatInteractions from "./components/ChatInteractions/ChatInteractions.jsx";
 import JobPostingForm from "./components/Jobs/PostForm.jsx";
 import StartupListingMagazine from "./components/StartUp/StartupSearch.jsx";
+import AnonymousForum from "./components/AnonymousForum/AnonymousForum.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
+import Startup from "./components/StartUp/Startup.jsx";
+import AddStartup from "./components/StartUp/AddStartup.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -84,12 +87,24 @@ const router = createBrowserRouter([
           element:<StartupListingMagazine/>
         },
         {
+          path:"/forum",
+          element:<AnonymousForum/>
+        },
+        {
           path:"/AdminDashboard",
           element:<AdminDashboard/>
         },
-        
+        {
+          path:"/startupDetails",
+          element:<Startup/>
+        },
+        {
+          path:"/addStartup",
+          element:<AddStartup/>
+        }
+
     ]
-    
+
   },
   
 

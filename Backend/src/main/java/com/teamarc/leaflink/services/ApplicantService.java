@@ -28,8 +28,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ApplicantService {
 
-    @Value("${base.url}")
-    private String baseUrl;
+//    @Value("${base.url}")
+//    private String baseUrl;
 
 
     private final ApplicantRepository applicantRepository;
@@ -39,8 +39,6 @@ public class ApplicantService {
     private final SessionService sessionService;
     private final RatingService ratingService;
     private final SessionManagementService sessionManagementService;
-    private final OnboardNewEmployerRepository onboardNewEmployerRepository;
-    private final OnboardNewMentorRepository onboardNewMentorRepository;
     private final WalletService walletService;
 
     @Transactional
@@ -189,13 +187,6 @@ public class ApplicantService {
         return sessionManagementService.cancelSession(sessionId);
     }
 
-    public void requestEmployerOnboard(OnBoardNewEmployerDTO onboardNewEmployerDTO) {
-        onboardNewEmployerRepository.save(modelMapper.map(onboardNewEmployerDTO, OnboardNewEmployer.class));
-    }
-
-    public void requestMentorOnboard(OnboardNewMentorDTO onboardNewMentorDTO) {
-        onboardNewMentorRepository.save(modelMapper.map(onboardNewMentorDTO, OnboardNewMentor.class));
-    }
 
     public WalletDTO getWallet() {
         Wallet wallet = walletService.getWalletByUserId(getCurrentApplicant().getUser().getId());
