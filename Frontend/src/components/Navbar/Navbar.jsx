@@ -63,11 +63,11 @@ export default function ModernNavbar() {
           </div>
 
           <div className="hidden sm:flex items-center space-x-6">
-            {['Home', 'Jobs', 'Interactions', 'Find a Mentor'].map((item) => (
+            {['Home', 'Jobs', 'Interactions', 'Find a Mentor', 'Startups'].map((item) => (
               <Link 
                 key={item}
                 to={item === 'Home' ? '/' : item === 'Find a Mentor' ? '/mentors' : `/${item.toLowerCase()}`}
-                className="relative group px-3 py-2"
+                className="relative  group px-3 py-2"
               >
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300 text-sm font-medium">
                   {item}
@@ -111,9 +111,9 @@ export default function ModernNavbar() {
           <div className={`sm:hidden absolute top-full left-0 right-0 overflow-hidden transition-all duration-300 ${
             isMenuOpen ? 'max-h-screen' : 'max-h-0'
           }`}>
-            <div className="relative backdrop-blur-2xl bg-black/40 border-t border-white/10">
+            <div className="relative backdrop-blur-3xl bg-black/40 border-t border-white/10">
               <div className="px-4 py-3 space-y-2">
-                {['Home', 'Jobs', 'Interactions', 'Find a Mentor'].map((item) => (
+                {['Home', 'Jobs', 'Interactions', 'Find a Mentor','Startups'].map((item) => (
                   <Link
                     key={item}
                     to={item === 'Home' ? '/' : item === 'Find a Mentor' ? '/mentors' : `/${item.toLowerCase()}`}

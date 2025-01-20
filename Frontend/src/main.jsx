@@ -12,6 +12,9 @@ import EmployerProfile from "./components/Employer/EmployerProfile.jsx";
 import JobBoard from "./components/Jobs/JobBoard.jsx";
 import JobDetails from "./components/Jobs/JobDetails.jsx";
 import UserProfile from "./components/UserProfile/ProfileCard.jsx";
+import MentorDashboard from "./components/mentor/MentorDashboard.jsx";
+import MentorProfile from "./components/mentor/MentorProfile.jsx";
+import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,9 +48,26 @@ const router = createBrowserRouter([
           element:<JobDetails/>
         },
         {
-          path: "/profile",
-          element: <UserProfile />
+          path: "/mentor-profile/:mentorId",
+          element: (
+              <MentorProfile />
+          ),
+        },
+        {
+          path: "/MentorDashboard/:mentorId",
+          element: (
+              <MentorDashboard />
+          ),
+        },
+        {
+          path:"/profile",
+          element:<UserProfile/>
+        },
+        {
+          path:"/mentors",
+          element:<MentorSearchPage/>
         }
+
     ]
   },
   
