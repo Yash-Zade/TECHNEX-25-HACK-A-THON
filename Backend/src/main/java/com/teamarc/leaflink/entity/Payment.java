@@ -1,6 +1,6 @@
 package com.teamarc.leaflink.entity;
 
-import com.teamarc.careerlybackend.entity.enums.PaymentStatus;
+import com.teamarc.leaflink.entity.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

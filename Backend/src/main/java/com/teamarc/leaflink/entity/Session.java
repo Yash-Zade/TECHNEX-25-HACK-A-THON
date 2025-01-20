@@ -1,7 +1,8 @@
 package com.teamarc.leaflink.entity;
 
-import com.teamarc.careerlybackend.entity.enums.SessionStatus;
-import com.teamarc.careerlybackend.entity.enums.SessionType;
+
+import com.teamarc.leaflink.entity.enums.SessionStatus;
+import com.teamarc.leaflink.entity.enums.SessionType;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,6 +1,6 @@
 package com.teamarc.leaflink.entity;
 
-import com.teamarc.careerlybackend.entity.enums.TransactionType;
+import com.teamarc.leaflink.entity.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CurrentTimestamp;

@@ -1,6 +1,6 @@
 package com.teamarc.leaflink.entity;
 
-import com.teamarc.careerlybackend.entity.enums.ApplicationStatus;
+import com.teamarc.leaflink.entity.enums.ApplicationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
