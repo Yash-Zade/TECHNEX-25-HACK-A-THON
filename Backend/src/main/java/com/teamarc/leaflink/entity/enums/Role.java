@@ -1,5 +1,5 @@
 package com.teamarc.leaflink.entity.enums;
 
 public enum Role {
-    User, ADMIN
+    USER, ADMIN, APPLICNAT, EMPLOYER, MENTOR, ENTREPRENEUR, INVESTOR
 }
