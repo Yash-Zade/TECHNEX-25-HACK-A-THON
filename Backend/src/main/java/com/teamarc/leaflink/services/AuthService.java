@@ -53,7 +53,7 @@ public class AuthService {
             throw new RuntimeConflictException("The user already exist with email id: " + signupDto.getEmail());
 
         User mappedUser = modelMapper.map(signupDto, User.class);
-        mappedUser.setRoles(Set.of(Role.User));
+        mappedUser.setRoles(Set.of(Role.USER));
         mappedUser.setPassword(passwordEncoder.encode(mappedUser.getPassword()));
         User savedUser = userRepository.save(mappedUser);
         //TODO call any role service to create its role
