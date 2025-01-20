@@ -63,7 +63,7 @@ export default function ModernNavbar() {
           </div>
 
           <div className="hidden sm:flex items-center space-x-6">
-            {['Home', 'Jobs', 'Interactions', 'Find a Mentor', 'Startups'].map((item) => (
+            {['Home', 'Jobs', 'Chat', 'Find a Mentor', 'Startups'].map((item) => (
               <Link 
                 key={item}
                 to={item === 'Home' ? '/' : item === 'Find a Mentor' ? '/mentors' : `/${item.toLowerCase()}`}

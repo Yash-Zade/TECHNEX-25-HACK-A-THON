@@ -16,6 +16,8 @@ import MentorDashboard from "./components/mentor/MentorDashboard.jsx";
 import MentorProfile from "./components/mentor/MentorProfile.jsx";
 import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
 import ChatInteractions from "./components/ChatInteractions/ChatInteractions.jsx";
+import JobPostingForm from "./components/Jobs/PostForm.jsx";
+import StartupListingMagazine from "./components/StartUp/StartupSearch.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
         {
           path:"/chat",
           element:<ChatInteractions/>
+        },
+        {
+          path:"/apply/:jobId",
+          element:<JobPostingForm/>
+        },
+        {
+          path:"/startups",
+          element:<StartupListingMagazine/>
         }
 
     ]
