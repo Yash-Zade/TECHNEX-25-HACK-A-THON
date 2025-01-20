@@ -65,8 +65,8 @@ const ChatMessages = () => {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-emerald-900 via-gray-900 to-emerald-900 p-4 mt-0">
-      <div className="h-full max-w-6xl mx-auto bg-gray-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-emerald-700/30 shadow-2xl flex">
+    <div className="h-[545px] w-full bg-gradient-to-br from-emerald-900 via-gray-900 to-emerald-900 p-4 mt-0">
+      <div className="h-full w-full mx-auto bg-gray-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-emerald-700/30 shadow-2xl flex">
         {/* Mobile Menu Button */}
         <button 
           className="lg:hidden fixed top-6 left-6 z-50 p-2 bg-gray-800/80 backdrop-blur-sm rounded-full"
