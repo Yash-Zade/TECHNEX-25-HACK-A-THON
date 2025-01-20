@@ -1,5 +1,6 @@
 package com.teamarc.leaflink.dto;
 
+import com.teamarc.leaflink.entity.enums.SessionType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;

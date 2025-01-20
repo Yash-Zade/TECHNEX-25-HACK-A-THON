@@ -1,6 +1,6 @@
 package com.teamarc.leaflink.dto;
 
-import com.teamarc.careerlybackend.entity.enums.ApplicationStatus;
+import com.teamarc.leaflink.entity.enums.ApplicationStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

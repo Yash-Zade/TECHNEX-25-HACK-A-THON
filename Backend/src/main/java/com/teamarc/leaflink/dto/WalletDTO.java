@@ -1,5 +1,6 @@
 package com.teamarc.leaflink.dto;
 
+import com.teamarc.leaflink.entity.WalletTransaction;
 import lombok.Data;
 
 import java.math.BigDecimal;

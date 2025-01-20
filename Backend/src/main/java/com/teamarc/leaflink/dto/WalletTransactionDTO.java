@@ -1,6 +1,7 @@
 package com.teamarc.leaflink.dto;
 
 
+import com.teamarc.leaflink.entity.enums.TransactionType;
 import lombok.Builder;
 import lombok.Data;
 
