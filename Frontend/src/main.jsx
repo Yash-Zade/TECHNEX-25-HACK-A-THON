@@ -46,7 +46,28 @@ const router = createBrowserRouter([
         {
           path:"/jobs/:jobId",
           element:<JobDetails/>
+        },
+        {
+          path: "/mentor-profile/:mentorId",
+          element: (
+              <MentorProfile />
+          ),
+        },
+        {
+          path: "/MentorDashboard/:mentorId",
+          element: (
+              <MentorDashboard />
+          ),
+        },
+        {
+          path:"/profile",
+          element:<UserProfile/>
+        },
+        {
+          path:"/mentors",
+          element:<MentorSearchPage/>
         }
+
     ]
   },
   
