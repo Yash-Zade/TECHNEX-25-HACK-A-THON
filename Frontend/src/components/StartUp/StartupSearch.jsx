@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const startupData = [
   {
@@ -47,7 +48,7 @@ const StartupListingMagazine = () => {
     startup.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     startup.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  const navigate = useNavigate() ;
   return (
     <div className="pt-24 min-h-screen bg-gradient-to-br from-gray-900 to-black p-8">
       {/* Hero Section */}
@@ -120,10 +121,9 @@ const StartupListingMagazine = () => {
                     </div>
                   </div>
                 </div>
-
                 {/* Action Button */}
                 <div className="flex-shrink-0">
-                  <button className="group/btn flex items-center gap-2 px-6 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-medium transition-colors">
+                  <button onClick={()=>navigate("/startupDetails")} className="group/btn flex items-center gap-2 px-6 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-medium transition-colors">
                     Learn More
                     <ArrowRight className="group-hover/btn:translate-x-1 transition-transform" size={20} />
                   </button>
