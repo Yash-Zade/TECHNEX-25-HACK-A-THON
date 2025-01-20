@@ -15,6 +15,7 @@ import UserProfile from "./components/UserProfile/ProfileCard.jsx";
 import MentorDashboard from "./components/mentor/MentorDashboard.jsx";
 import MentorProfile from "./components/mentor/MentorProfile.jsx";
 import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
+import ChatInteractions from "./components/ChatInteractions/ChatInteractions.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
         {
           path:"/mentors",
           element:<MentorSearchPage/>
+        },
+        {
+          path:"/chat",
+          element:<ChatInteractions/>
         }
 
     ]
