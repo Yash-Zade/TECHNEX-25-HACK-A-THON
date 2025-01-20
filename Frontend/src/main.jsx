@@ -18,6 +18,7 @@ import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
 import ChatInteractions from "./components/ChatInteractions/ChatInteractions.jsx";
 import JobPostingForm from "./components/Jobs/PostForm.jsx";
 import StartupListingMagazine from "./components/StartUp/StartupSearch.jsx";
+import AnonymousForum from "./components/AnonymousForum/AnonymousForum.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
         {
           path:"/startups",
           element:<StartupListingMagazine/>
+        },
+        {
+          path:"/forum",
+          element:<AnonymousForum/>
         }
 
     ]
