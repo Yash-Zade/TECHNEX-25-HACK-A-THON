@@ -7,6 +7,10 @@ import Layout from "./components/Layout/Layout.jsx";// Import the custom Layout 
 import Signup from "./components/Auth/Signup.jsx";
 import Login from "./components/Auth/Login.jsx";
 import Home from "./components/Home/Home.jsx";
+import EmployerDashboard from "./components/Employer/EmployerDashboard.jsx";
+import EmployerProfile from "./components/Employer/EmployerProfile.jsx";
+import JobBoard from "./components/Jobs/JobBoard.jsx";
+import JobDetails from "./components/Jobs/JobDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +29,24 @@ const router = createBrowserRouter([
   {
     path:"/signup",
     element: <Signup />
+  },
+  {
+    path:"/employerdashboard",
+    element:<EmployerDashboard/>
+  },
+  {
+    path:"/employerprofile",
+    element:<EmployerProfile/>
+  },
+  {
+    path: "/jobs",
+    element: <JobBoard/>,
+  },
+  {
+    path:"/jobs/:jobId",
+    element:<JobDetails/>
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
