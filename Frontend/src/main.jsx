@@ -22,6 +22,7 @@ import AnonymousForum from "./components/AnonymousForum/AnonymousForum.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
 import Startup from "./components/StartUp/Startup.jsx";
 import AddStartup from "./components/StartUp/AddStartup.jsx";
+import Protected from "./components/Auth/Protected.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,67 +41,113 @@ const router = createBrowserRouter([
         },
         {
           path:"/employerdashboard",
-          element:<EmployerDashboard/>
+          element:(
+            <Protected>
+            <EmployerDashboard/>
+            </Protected>)
         },
         {
           path:"/employerprofile",
-          element:<EmployerProfile/>
-        },
+          element:
+            (
+            <Protected>
+              <EmployerProfile/>
+            </Protected>)
+          },
         {
           path: "/jobs",
           element: <JobBoard/>,
         },
         {
           path:"/jobs/:jobId",
-          element:<JobDetails/>
-        },
+          element:
+          (
+            <Protected>
+              <JobDetails/>
+            </Protected>
+          )
+          },
         {
           path: "/mentor-profile/:mentorId",
           element: (
+            <Protected>
               <MentorProfile />
+            </Protected>
           ),
         },
         {
           path: "/MentorDashboard/:mentorId",
           element: (
+            <Protected>
               <MentorDashboard />
+            </Protected>
           ),
         },
         {
           path:"/profile",
-          element:<UserProfile/>
-        },
+          element:(
+          <Protected>
+            <UserProfile/>
+          </Protected>
+          )
+          },
         {
           path:"/mentors",
           element:<MentorSearchPage/>
         },
         {
           path:"/chat",
-          element:<ChatInteractions/>
+          element:(
+            <Protected>
+              <ChatInteractions/>
+            </Protected>
+          )
         },
         {
           path:"/apply/:jobId",
-          element:<JobPostingForm/>
-        },
+          element:(
+            <Protected>
+              <JobPostingForm/>
+            </Protected>
+          )
+          },
         {
           path:"/startups",
-          element:<StartupListingMagazine/>
+          element:(
+              <StartupListingMagazine/>
+            )
         },
         {
           path:"/forum",
-          element:<AnonymousForum/>
+          element:
+          (
+          <Protected>
+            <AnonymousForum/>
+          </Protected>
+          )
         },
         {
           path:"/AdminDashboard",
-          element:<AdminDashboard/>
+          element:(
+              <Protected>
+                <AdminDashboard/>
+              </Protected>)
         },
         {
           path:"/startupDetails",
-          element:<Startup/>
+          element:
+          (
+          <Protected>
+            <Startup/>
+          </Protected>
+          )
         },
         {
           path:"/addStartup",
-          element:<AddStartup/>
+          element:(
+            <Protected>
+              <AddStartup/>
+            </Protected>)
         }
 
     ]
