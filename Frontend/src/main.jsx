@@ -19,33 +19,33 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />
-      }
+      },{
+        path: "/login",
+        element: <Login />
+        },
+        {
+          path:"/signup",
+          element: <Signup />
+        },
+        {
+          path:"/employerdashboard",
+          element:<EmployerDashboard/>
+        },
+        {
+          path:"/employerprofile",
+          element:<EmployerProfile/>
+        },
+        {
+          path: "/jobs",
+          element: <JobBoard/>,
+        },
+        {
+          path:"/jobs/:jobId",
+          element:<JobDetails/>
+        }
     ]
   },
-  {
-  path: "/login",
-  element: <Login />
-  },
-  {
-    path:"/signup",
-    element: <Signup />
-  },
-  {
-    path:"/employerdashboard",
-    element:<EmployerDashboard/>
-  },
-  {
-    path:"/employerprofile",
-    element:<EmployerProfile/>
-  },
-  {
-    path: "/jobs",
-    element: <JobBoard/>,
-  },
-  {
-    path:"/jobs/:jobId",
-    element:<JobDetails/>
-  }
+  
 
 ]);
 
