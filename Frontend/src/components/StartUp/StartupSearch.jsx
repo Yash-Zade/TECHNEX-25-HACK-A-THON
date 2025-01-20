@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Search, ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import apiClient from '../Auth/ApiClient';
 
 const startupData = [
   {
@@ -40,15 +41,31 @@ const startupData = [
     logo: "/api/placeholder/80/80"
   }
 ];
-
+const roledata = [];
 const StartupListingMagazine = () => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [role, setRole] = useState([]);
   const filteredStartups = startupData.filter(startup =>
     startup.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     startup.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
   const navigate = useNavigate() ;
+  useEffect(() => {
+    function handleStartups(){
+    try {
+        // const response = apiClient ('https://api.example.com/startups');
+        // const {data} = response.data;
+        setRole(roledata);
+      } catch (error) {
+      console.error('Error decoding token:', error);
+      if (authentication) {
+        navigate('/login');
+      }
+      
+    }
+  }
+  handleStartups();
+  },[]);
   return (
     <div className="pt-24 min-h-screen bg-gradient-to-br from-gray-900 to-black p-8">
       {/* Hero Section */}
@@ -73,6 +90,23 @@ const StartupListingMagazine = () => {
           />
         </div>
       </div>
+      <div className='flex justify-center gap-8'>
+  {!role.includes('investor') && (
+    <button className="bg-green-500 hover:bg-green-600 text-white font-bold p-4 rounded-xl shadow-md transition-all duration-300 mb-4">
+      <div className="text-center">
+        <h2 className="text-3xl font-bold ">Be an Investor</h2>
+      </div>
+    </button>
+  )}
+  {!role.includes('entrepreneur') && (
+    <button className="bg-green-500 hover:bg-green-600 text-white font-bold  p-4 rounded-xl shadow-md transition-all duration-300 mb-4"
+    onClick={() => navigate('/addStartup')}>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold">Be an Entrepreneur</h2>
+      </div>
+    </button>
+  )}
+</div>
 
       {/* Startup Cards */}
       <div className="max-w-6xl mx-auto space-y-8">

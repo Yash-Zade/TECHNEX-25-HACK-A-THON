@@ -19,6 +19,8 @@ export default function ModernNavbar() {
   }, []);
 
   const logout = () => {
+    localStorage.removeItem('accessToken');
+    navigate('/login');
     // logout logic here
   };
 
