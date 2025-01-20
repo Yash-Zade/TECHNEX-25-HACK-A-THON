@@ -28,17 +28,18 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ApplicantService {
 
-    @Value("${base.url}")
-    private String baseUrl;
+//    @Value("${base.url}")
+//    private String baseUrl;
 
 
     private final ApplicantRepository applicantRepository;
     private final JobApplicationRepository jobApplicationRepository;
     private final ModelMapper modelMapper;
     private final JobService jobService;
-    private final OnboardNewEmployerRepository onboardNewEmployerRepository;
-    private final OnboardNewMentorRepository onboardNewMentorRepository;
-
+    private final SessionService sessionService;
+    private final RatingService ratingService;
+    private final SessionManagementService sessionManagementService;
+    private final WalletService walletService;
 
     @Transactional
     public JobApplicationDTO applyJob(Long jobId, JobApplicationDTO jobApplicationDTO) {
@@ -126,6 +127,39 @@ public class ApplicantService {
                 .orElseThrow(() -> new ResourceNotFoundException("Applicant not found with id: " + applicantId)), ApplicantDTO.class);
     }
 
+
+    public SessionDTO requestSession(Long sessionId) {
+        ApplicantDTO applicant = getApplicantProfile();
+        return sessionManagementService.requestSession(sessionId, applicant);
+    }
+
+
+    public MentorProfileDTO rateMentor(RatingDTO ratingDTO, Long sessionId) {
+        Session session = modelMapper.map(sessionService.getSessionById(sessionId), Session.class);
+        Applicant applicant = getCurrentApplicant();
+        if (!applicant.equals(session.getApplicant())) {
+            throw new RuntimeException("Applicant is not the owner of session");
+        }
+        if (!session.getSessionStatus().equals(SessionStatus.COMPLETED)) {
+            throw new RuntimeException("Session status is not ended hence cannot be Rated, status: " + session.getSessionStatus());
+        }
+
+        return ratingService.rateMentor(ratingDTO);
+    }
+
+    public SessionDTO joinSession(Long sessionId, String otp) {
+        return sessionManagementService.joinSession(sessionId, otp);
+    }
+
+    public SessionDTO endSession(Long sessionId) {
+        return sessionManagementService.endSessionByApplicant(sessionId);
+    }
+
+    public JobApplication getApplicationById(Long applicationId) {
+        return jobApplicationRepository.findById(applicationId)
+                .orElseThrow(() -> new ResourceNotFoundException("Job application not found with id: " + applicationId));
+    }
+
     public boolean isOwnerOfApplication(Long applicationId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApplication = getApplicationById(applicationId);
@@ -134,11 +168,13 @@ public class ApplicantService {
         return user.equals(applicationUser);
     }
 
-    private JobApplication getApplicationById(Long applicationId) {
-        return jobApplicationRepository.findById(applicationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Job application not found with id: " + applicationId));
+    public boolean isOwnerOfSession(Long sessionId) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        SessionDTO session = sessionService.getSessionById(sessionId);
+        ApplicantDTO applicant = getApplicantById(session.getApplicantId());
+        User sessionUser = modelMapper.map(applicant.getUser(), User.class);
+        return user.equals(sessionUser);
     }
-
 
     public boolean isOwnerOfProfile(Long applicantId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -147,13 +183,13 @@ public class ApplicantService {
         return user.equals(applicantUser);
     }
 
-
-    public void requestEmployerOnboard(OnBoardNewEmployerDTO onboardNewEmployerDTO) {
-        onboardNewEmployerRepository.save(modelMapper.map(onboardNewEmployerDTO, OnboardNewEmployer.class));
+    public SessionDTO cancelSession(Long sessionId) {
+        return sessionManagementService.cancelSession(sessionId);
     }
 
-    public void requestMentorOnboard(OnboardNewMentorDTO onboardNewMentorDTO) {
-        onboardNewMentorRepository.save(modelMapper.map(onboardNewMentorDTO, OnboardNewMentor.class));
-    }
 
+    public WalletDTO getWallet() {
+        Wallet wallet = walletService.getWalletByUserId(getCurrentApplicant().getUser().getId());
+        return modelMapper.map(wallet, WalletDTO.class);
+    }
 }

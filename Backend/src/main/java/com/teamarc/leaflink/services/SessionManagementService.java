@@ -21,6 +21,8 @@ public class SessionManagementService {
 
     private final SessionRepository sessionRepository;
     private final ModelMapper modelMapper;
+    private final PaymentService paymentService;
+    private final RatingService ratingService;
 
 
 

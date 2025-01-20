@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Leaflink.iml" filepath="$PROJECT_DIR$/.idea/Leaflink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Backend/Leaflink.iml" filepath="$PROJECT_DIR$/Backend/Leaflink.iml" />
     </modules>
   </component>
 </project>

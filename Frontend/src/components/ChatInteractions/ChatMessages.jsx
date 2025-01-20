@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MessageSquare, Mail, Phone, Video, Send, MoreVertical, X } from 'lucide-react';
-
 const ChatMessages = () => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
@@ -9,7 +8,6 @@ const ChatMessages = () => {
   const [messageInput, setMessageInput] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentUser] = useState({ id: 1 });
-
   // Dummy data remains the same as your original code
   const dummyContacts = [
     {
@@ -213,7 +211,7 @@ const ChatMessages = () => {
                   />
                   <button 
                     className="p-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white rounded-xl"
-                    onClick={handleSendMessage}
+                    onClick={handleSendMessage} 
                   >
                     <Send className="w-5 h-5" />
                   </button>

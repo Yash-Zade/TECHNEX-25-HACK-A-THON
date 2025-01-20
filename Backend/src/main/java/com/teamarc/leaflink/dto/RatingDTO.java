@@ -1,5 +1,6 @@
 package com.teamarc.leaflink.dto;
 
+import com.teamarc.leaflink.entity.Session;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -13,5 +14,5 @@ public class RatingDTO {
 
     private String comment;
 
-    private SessionDTO session;
+    private Session session;
 }
