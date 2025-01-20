@@ -173,7 +173,7 @@ const JobDetails = () => {
           >
            <h3 className="text-xl font-semibold text-white mb-2">{job.jobTitle}</h3>
 
-            <p className="text-white/60 mt-2 text-base">{job.department} • {job.location}</p>
+            <p className="text-white/60 mt-2 text-base">{job.department}  {job.location}</p>
           </motion.div>
 
           {/* Main Content */}

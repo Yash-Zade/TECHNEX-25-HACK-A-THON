@@ -11,6 +11,7 @@ import EmployerDashboard from "./components/Employer/EmployerDashboard.jsx";
 import EmployerProfile from "./components/Employer/EmployerProfile.jsx";
 import JobBoard from "./components/Jobs/JobBoard.jsx";
 import JobDetails from "./components/Jobs/JobDetails.jsx";
+import UserProfile from "./components/UserProfile/ProfileCard.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         {
           path:"/jobs/:jobId",
           element:<JobDetails/>
+        },
+        {
+          path: "/profile",
+          element: <UserProfile />
         }
     ]
   },

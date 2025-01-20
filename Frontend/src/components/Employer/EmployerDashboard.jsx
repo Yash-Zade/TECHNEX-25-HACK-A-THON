@@ -10,7 +10,7 @@ import {
   XCircle,
   Users,
 } from "lucide-react";
-
+import WalletComponent from "../Wallet/Wallet";
 // Background gradient orb component
 const GradientOrb = ({ className }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -217,10 +217,12 @@ const EmployerDashboard = () => {
       <div className="max-w-7xl mx-auto space-y-8 p-24">
         {/* Profile Section */}
         <div className="backdrop-blur-xl bg-gray-900/30 rounded-3xl p-6 border border-white/20">
+        <div className="flex space-x-5">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-6">
             Employer Dashboard
           </h1>
-
+        <WalletComponent/>
+        </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
