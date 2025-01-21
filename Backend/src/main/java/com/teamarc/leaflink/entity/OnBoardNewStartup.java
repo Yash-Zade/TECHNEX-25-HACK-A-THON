@@ -40,10 +40,10 @@ public class OnBoardNewStartup {
     @OneToOne
     private Founder founder;
 
-    @ManyToMany(mappedBy = "startup")
+    @ManyToMany
     private List<Investor> investors;
 
-    @OneToMany(mappedBy = "startup", cascade = CascadeType.ALL)
+    @OneToMany
     private List<Investment> investments;
 
 }

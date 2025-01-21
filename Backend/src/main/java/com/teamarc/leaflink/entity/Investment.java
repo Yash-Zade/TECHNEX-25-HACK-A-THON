@@ -24,7 +24,6 @@ public class Investment {
     private Investor investor;
 
     @ManyToOne
-    @JoinColumn(name = "startup_id", nullable = false)
     private StartUp startup;
 
     @Column(nullable = false)

@@ -1,9 +1,6 @@
 package com.teamarc.leaflink.services;
 
-import com.teamarc.leaflink.dto.OnBoardNewEmployerDTO;
-import com.teamarc.leaflink.dto.OnBoardNewFounderDTO;
-import com.teamarc.leaflink.dto.OnBoardNewInvestorDTO;
-import com.teamarc.leaflink.dto.OnboardNewMentorDTO;
+import com.teamarc.leaflink.dto.*;
 import com.teamarc.leaflink.entity.OnBoardNewInvestor;
 import com.teamarc.leaflink.entity.OnboardNewEmployer;
 import com.teamarc.leaflink.entity.OnboardNewMentor;
@@ -57,6 +54,10 @@ public class UserService implements UserDetailsService {
     }
 
     public void requestFounderOnboard(OnBoardNewFounderDTO founderRequestDTO) {
+
+    }
+
+    public void requestStartupOnboard(OnBoardNewStartupDTO startupRequestDTO) {
 
     }
 }

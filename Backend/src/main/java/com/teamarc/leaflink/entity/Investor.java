@@ -18,11 +18,10 @@ public class Investor {
     @OneToOne
     private User user;
 
-    @OneToMany(mappedBy = "investor", cascade = CascadeType.ALL)
+    @OneToMany
     private List<Investment> investments;
 
     @ManyToMany
-    @JoinColumn(name = "startup_id")
     private List<StartUp> startup;
 
 }

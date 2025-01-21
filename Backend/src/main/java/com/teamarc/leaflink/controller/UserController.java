@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/request/startup")
-    public ResponseEntity<StartupDTO> requestToBeAStartup(@RequestBody OnBoardNewStartupDTO startupRequestDTO) {
+    public ResponseEntity<StartUpDTO> requestToBeAStartup(@RequestBody OnBoardNewStartupDTO startupRequestDTO) {
         userService.requestStartupOnboard(startupRequestDTO);
         return ResponseEntity.ok().build();
     }
