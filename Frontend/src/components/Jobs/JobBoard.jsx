@@ -199,13 +199,7 @@ const JobBoard = () => {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
               Job Board
             </h1>
-            <button 
-              className="flex items-center gap-2 px-4 py-2 bg-emerald-800/30 rounded-xl hover:bg-emerald-700/40 transition-colors"
-              onClick={() => navigate('/addJob')}
-            >
-              <Plus size={20} />
-              <span>Post Job</span>
-            </button>
+            
           </div>
 
           <div className="relative">
