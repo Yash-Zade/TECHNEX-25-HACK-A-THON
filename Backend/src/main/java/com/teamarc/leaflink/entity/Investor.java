@@ -21,8 +21,8 @@ public class Investor {
     @OneToMany(mappedBy = "investor", cascade = CascadeType.ALL)
     private List<Investment> investments;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "startup_id")
-    private StartUp startup;
+    private List<StartUp> startup;
 
 }

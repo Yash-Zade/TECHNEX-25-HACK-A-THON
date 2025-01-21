@@ -12,8 +12,6 @@ public class FounderDTO {
 
     private String bio;
 
-    private String profilePicture;
-
     private List<StartUpDTO> startups;
 
 }

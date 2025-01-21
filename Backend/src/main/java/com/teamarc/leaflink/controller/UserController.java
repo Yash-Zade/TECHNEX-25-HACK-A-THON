@@ -1,18 +1,18 @@
 package com.teamarc.leaflink.controller;
 
 
-import com.teamarc.leaflink.dto.EmployerDTO;
-import com.teamarc.leaflink.dto.MentorProfileDTO;
-import com.teamarc.leaflink.dto.OnBoardNewEmployerDTO;
-import com.teamarc.leaflink.dto.OnboardNewMentorDTO;
+import com.teamarc.leaflink.dto.*;
 import com.teamarc.leaflink.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping(path = "/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -27,6 +27,24 @@ public class UserController {
     @PostMapping(path = "/request/employer")
     public ResponseEntity<EmployerDTO> requestToBeAEmployer(@RequestBody OnBoardNewEmployerDTO employerRequestDTO) {
         userService.requestEmployerOnboard(employerRequestDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(path = "/request/investor")
+    public ResponseEntity<InvestorDTO> requestToBeAInvestor(@RequestBody OnBoardNewInvestorDTO investorRequestDTO) {
+        userService.requestInvestorOnboard(investorRequestDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(path = "/request/founder")
+    public ResponseEntity<FounderDTO> requestToBeAFounder(@RequestBody OnBoardNewFounderDTO founderRequestDTO) {
+        userService.requestFounderOnboard(founderRequestDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(path = "/request/startup")
+    public ResponseEntity<StartupDTO> requestToBeAStartup(@RequestBody OnBoardNewStartupDTO startupRequestDTO) {
+        userService.requestStartupOnboard(startupRequestDTO);
         return ResponseEntity.ok().build();
     }
 
