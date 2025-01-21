@@ -148,7 +148,7 @@ const router = createBrowserRouter([
             <Protected>
               <AddStartup/>
             </Protected>)
-        }
+        },
 
     ]
 

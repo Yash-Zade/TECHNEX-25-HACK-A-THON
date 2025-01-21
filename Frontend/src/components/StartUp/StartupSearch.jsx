@@ -66,6 +66,11 @@ const StartupListingMagazine = () => {
   }
   handleStartups();
   },[]);
+  const handleinvestor = () => {
+    if (!role.includes("investor")) {
+      setRole((prevRoles) => [...prevRoles, "investor"]);
+    }
+  };
   return (
     <div className="pt-24 min-h-screen bg-gradient-to-br from-gray-900 to-black p-8">
       {/* Hero Section */}
@@ -92,7 +97,8 @@ const StartupListingMagazine = () => {
       </div>
       <div className='flex justify-center gap-8'>
   {!role.includes('investor') && (
-    <button className="bg-green-500 hover:bg-green-600 text-white font-bold p-4 rounded-xl shadow-md transition-all duration-300 mb-4">
+    <button className="bg-green-500 hover:bg-green-600 text-white font-bold p-4 rounded-xl shadow-md transition-all duration-300 mb-4"
+    onClick={handleinvestor}>
       <div className="text-center">
         <h2 className="text-3xl font-bold ">Be an Investor</h2>
       </div>
