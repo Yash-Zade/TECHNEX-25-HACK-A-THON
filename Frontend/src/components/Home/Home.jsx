@@ -100,7 +100,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button 
                 className="w-full sm:w-auto px-8 py-4 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all duration-300 hover:scale-105"
-                onClick={() => handleNavigate('/register')}
+                onClick={() => handleNavigate('/jobs')}
               >
                 Get Started
               </button>
