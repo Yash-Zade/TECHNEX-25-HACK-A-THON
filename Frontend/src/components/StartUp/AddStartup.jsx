@@ -115,21 +115,7 @@ const AddStartup = () => {
                 required
               />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <label className="block text-white text-sm font-medium mb-2">Founder</label>
-              <input
-                type="text"
-                value={formData.founder}
-                onChange={(e) => setFormData({...formData, founder: e.target.value})}
-                className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
-                placeholder="Name of your Founder"
-                required
-              />
-            </motion.div>
+            
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -191,21 +177,7 @@ const AddStartup = () => {
                 required
               />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <label className="block text-white text-sm font-medium mb-2">Logo</label>
-              <input
-                type="text"
-                value={formData.Logo}
-                onChange={(e) => setFormData({...formData, Logo: e.target.value})}
-                className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
-                placeholder="Add your Logo URL here"
-                required
-              />
-            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -234,51 +206,6 @@ const AddStartup = () => {
                 placeholder="Description..."
                 required
               />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-              className="space-y-2"
-            >
-              <label className="block text-white text-sm font-medium mb-2">Investors</label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={currentSkill}
-                  onChange={(e) => setCurrentSkill(e.target.value)}
-                  className="flex-1 px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
-                  placeholder="Add your investors"
-                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
-                />
-                <button
-                  type="button"
-                  onClick={addSkill}
-                  className="p-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-                >
-                  <Plus className="w-6 h-6 text-white" />
-                </button>
-              </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {formData.investors.map((skill, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-500/20 text-blue-300 border border-blue-500/30"
-                  >
-                    {skill}
-                    <button
-                      type="button"
-                      onClick={() => removeSkill(skill)}
-                      className="ml-2 text-blue-300 hover:text-blue-100"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </motion.span>
-                ))}
-              </div>
             </motion.div>
           </div>
 

@@ -13,7 +13,7 @@ const MentorCard = ({ mentor }) => {
     <div className="relative group bg-white/5 backdrop-blur-xl rounded-2xl transition-all duration-300 hover:bg-white/10">
       <div className="relative p-6 rounded-2xl overflow-hidden flex flex-col">
         <h3 className="text-2xl font-semibold text-white mb-2">
-          {mentor.user.name}
+          {mentor.name}
         </h3>
         <p className="text-gray-400 text-sm mb-4 line-clamp-3">{mentor.bio}</p>
 
@@ -21,7 +21,7 @@ const MentorCard = ({ mentor }) => {
           {mentor.expertise.map((skill, index) => (
             <span
               key={index}
-              className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-sm"
+              className="px-3 py-1 rounded-full bg-green-500/10 text-emerald-300 text-sm"
             >
               {skill}
             </span>
@@ -34,23 +34,23 @@ const MentorCard = ({ mentor }) => {
               <Star
                 key={index}
                 className={`w-5 h-5 ${
-                  index < Math.round(mentor.averageRating)
+                  index < Math.round(mentor.avgRating)
                     ? "text-yellow-400"
                     : "text-gray-600"
                 }`}
                 fill={
-                  index < Math.round(mentor.averageRating) ? "currentColor" : "none"
+                  index < Math.round(mentor.avgRating) ? "currentColor" : "none"
                 }
               />
             ))}
           </div>
           <span className="text-gray-400 text-sm">
-            {mentor.averageRating.toFixed(1)} / 5
+            {mentor.avgRating.toFixed(1)} / 5
           </span>
         </div>
 
         <button
-          className="w-full py-2.5 rounded-xl bg-purple-500/20 text-white font-medium transition-all duration-300 hover:bg-purple-500/30"
+          className="w-full py-2.5 rounded-xl bg-green-500/20 text-white font-medium transition-all duration-300 hover:bg-green-500/30"
           onClick={handleMentor}
         >
           Schedule Session
@@ -114,14 +114,45 @@ const MentorSearchPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const dummyData = [
+    {
+      id: 1,
+      name: "John Doe",
+      avgRating: 4.8,
+      bio: "Experienced software engineer specializing in frontend development.",
+      expertise: ["React", "JavaScript", "CSS"],
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      avgRating: 4.5,
+      bio: "Data scientist with expertise in machine learning and AI.",
+      expertise: ["Python", "Machine Learning", "AI"],
+    },
+    {
+      id: 3,
+      name: "Emily Johnson",
+      avgRating: 4.7,
+      bio: "Digital marketer with a knack for SEO and content strategy.",
+      expertise: ["SEO", "Content Marketing", "Google Ads"],
+    },
+    {
+      id: 4,
+      name: "Michael Brown",
+      avgRating: 4.2,
+      bio: "Full-stack developer with a focus on backend technologies.",
+      expertise: ["Node.js", "MongoDB", "AWS"],
+    },
+  ];
+
   useEffect(() => {
     const fetchMentors = async () => {
       setIsLoading(true);
       try {
-        const response = await apiClient.get("/public/mentors");
-        const mentorsData = response.data.data.content;
-        setMentors(mentorsData);
-        setFilteredMentors(mentorsData);
+        // const response = await apiClient.get("/public/mentors");
+        // const mentorsData = response.data.data.content;
+        setMentors(dummyData);
+        setFilteredMentors(dummyData);
         setIsLoading(false);
       } catch (err) {
         setError("Failed to fetch mentors. Please try again later.");
@@ -135,7 +166,7 @@ const MentorSearchPage = () => {
   useEffect(() => {
     const filtered = mentors.filter(
       (mentor) =>
-        mentor.user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        mentor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         mentor.expertise.some((skill) =>
           skill.toLowerCase().includes(searchQuery.toLowerCase())
         )
@@ -146,8 +177,8 @@ const MentorSearchPage = () => {
   return (
     <div className="min-h-screen bg-black pt-10">
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 -left-40 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-screen filter blur-3xl" />
-        <div className="absolute bottom-0 -right-40 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-screen filter blur-3xl" />
+        <div className="absolute top-0 -left-40 w-96 h-96 bg-green-500/20 rounded-full mix-blend-screen filter blur-3xl" />
+        <div className="absolute bottom-0 -right-40 w-96 h-96 bg-emerald-500/20 rounded-full mix-blend-screen filter blur-3xl" />
       </div>
 
       <div className="relative container mx-auto px-4 py-12">

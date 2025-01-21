@@ -30,9 +30,9 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Gradient Orbs */}
-      <div className="absolute -left-4 w-96 h-96 bg-purple-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob" />
-      <div className="absolute -right-4 w-96 h-96 bg-blue-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-2000" />
+      {/* Updated gradient orbs to green */}
+      <div className="absolute -left-4 w-96 h-96 bg-green-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob" />
+      <div className="absolute -right-4 w-96 h-96 bg-emerald-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-2000" />
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -49,8 +49,8 @@ const Signup = () => {
                 animate={{ scale: 1 }}
                 className="text-center lg:text-left"
               >
-                <h1 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">
-                  Project Name
+                <h1 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400 mb-4">
+                  LeafLink
                 </h1>
                 <h2 className="text-2xl lg:text-3xl font-semibold text-white mb-4">Create Account</h2>
                 <p className="text-gray-400 text-lg mb-6">
@@ -58,7 +58,7 @@ const Signup = () => {
                 </p>
                 <p className="text-gray-300">
                   Already have an account?{' '}
-                  <Link to="/login" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
+                  <Link to="/login" className="text-green-400 hover:text-green-300 transition-colors font-medium">
                     Sign In
                   </Link>
                 </p>
@@ -84,7 +84,7 @@ const Signup = () => {
                     {...register("name", { 
                       required: "Name is required"
                     })}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-white placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 focus:ring-1 focus:bg-white/[0.05] transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-white placeholder-gray-500 focus:border-green-500 focus:ring-green-500 focus:ring-1 focus:bg-white/[0.05] transition-all duration-200"
                     placeholder="Enter your full name"
                   />
                   {errors.name && (
@@ -102,7 +102,7 @@ const Signup = () => {
                         message: "Please enter a valid email address"
                       }
                     })}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-white placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 focus:ring-1 focus:bg-white/[0.05] transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-white placeholder-gray-500 focus:border-green-500 focus:ring-green-500 focus:ring-1 focus:bg-white/[0.05] transition-all duration-200"
                     type="email"
                     placeholder="Enter your email"
                   />
@@ -121,7 +121,7 @@ const Signup = () => {
                         message: "Password must be at least 6 characters"
                       }
                     })}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-white placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 focus:ring-1 focus:bg-white/[0.05] transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-white placeholder-gray-500 focus:border-green-500 focus:ring-green-500 focus:ring-1 focus:bg-white/[0.05] transition-all duration-200"
                     type="password"
                     placeholder="Enter your password"
                   />
@@ -134,7 +134,7 @@ const Signup = () => {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   type="submit"
-                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg shadow-blue-600/20"
+                  className="w-full py-3 px-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-medium hover:from-green-700 hover:to-emerald-700 transition-all duration-200 shadow-lg shadow-green-600/20"
                 >
                   Create Account
                 </motion.button>

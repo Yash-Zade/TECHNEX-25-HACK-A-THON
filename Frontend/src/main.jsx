@@ -42,17 +42,19 @@ const router = createBrowserRouter([
         {
           path:"/employerdashboard",
           element:(
-            <Protected>
+            // <Protected>
             <EmployerDashboard/>
-            </Protected>)
+            // </Protected>
+            )
         },
         {
           path:"/employerprofile",
           element:
             (
-            <Protected>
+            // <Protected>
               <EmployerProfile/>
-            </Protected>)
+            // </Protected>
+            )
           },
         {
           path: "/jobs",
@@ -62,33 +64,33 @@ const router = createBrowserRouter([
           path:"/jobs/:jobId",
           element:
           (
-            <Protected>
+            // <Protected>
               <JobDetails/>
-            </Protected>
+            // </Protected>
           )
           },
         {
           path: "/mentor-profile/:mentorId",
           element: (
-            <Protected>
+            // <Protected>
               <MentorProfile />
-            </Protected>
+            // </Protected>
           ),
         },
         {
           path: "/MentorDashboard/:mentorId",
           element: (
-            <Protected>
+            // <Protected>
               <MentorDashboard />
-            </Protected>
+            // </Protected>
           ),
         },
         {
           path:"/profile",
           element:(
-          <Protected>
+          // <Protected>
             <UserProfile/>
-          </Protected>
+          // </Protected>
           )
           },
         {
@@ -98,17 +100,17 @@ const router = createBrowserRouter([
         {
           path:"/chat",
           element:(
-            <Protected>
+            // <Protected>
               <ChatInteractions/>
-            </Protected>
+            // </Protected>
           )
         },
         {
           path:"/apply/:jobId",
           element:(
-            <Protected>
+            // <Protected>
               <JobPostingForm/>
-            </Protected>
+            // </Protected>
           )
           },
         {
@@ -121,33 +123,35 @@ const router = createBrowserRouter([
           path:"/forum",
           element:
           (
-          <Protected>
+          // <Protected>
             <AnonymousForum/>
-          </Protected>
+          // </Protected>
           )
         },
         {
           path:"/AdminDashboard",
           element:(
-              <Protected>
+              // <Protected>
                 <AdminDashboard/>
-              </Protected>)
+              // </Protected>
+              )
         },
         {
           path:"/startupDetails",
           element:
           (
-          <Protected>
+          // <Protected>
             <Startup/>
-          </Protected>
+          // </Protected>
           )
         },
         {
           path:"/addStartup",
           element:(
-            <Protected>
+            // <Protected>
               <AddStartup/>
-            </Protected>)
+            // </Protected>
+            )
         },
 
     ]

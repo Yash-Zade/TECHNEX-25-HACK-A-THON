@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Plus, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import apiClient from '../Auth/ApiClient';
 
 const GradientOrb = ({ className }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -15,7 +14,7 @@ const JobCard = ({ job, onClick }) => (
   >
     <div className="flex justify-between items-start">
       <div>
-        <h3 className="text-xl font-semibold text-white mb-2">{job.title}</h3>
+        <h3 className="text-xl font-semibold text-white mb-2">{job.jobTitle}</h3>
         <p className="text-gray-400 text-sm mb-3 line-clamp-2">{job.description}</p>
       </div>
       <ChevronRight className="text-white/50 group-hover:text-white/80 transition-colors" />
@@ -38,15 +37,15 @@ const JobCard = ({ job, onClick }) => (
 
     <div className="flex justify-between items-center text-sm text-white/60">
       <span>Posted by: {job.company || 'Unknown'}</span>
-      <span>{job.location || 'No location specified'}</span>
+      {/* <span>{job.location || 'No location specified'}</span> */}
       <span
         className={`px-2 py-1 rounded-full ${
           job.jobStatus === 'Active'
             ? 'bg-emerald-500/20 text-emerald-300'
-            : 'bg-yellow-500/20 text-yellow-300'
+            : 'bg-blue-800 text-white'
         }`}
       >
-        {job.jobStatus || 'Unknown'}
+        {job.jobStatus || 'OPEN'}
       </span>
     </div>
   </button>
