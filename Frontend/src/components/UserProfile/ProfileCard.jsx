@@ -151,52 +151,130 @@ const UserProfile = () => {
       {
         applicantId: 1,
         name: "John Doe",
-        skills: ["JavaScript", "React", "Node.js", "CSS"],
+        email: "john.doe@example.com",
+        phone: "+1 (555) 123-4567",
+        skills: ["JavaScript", "React", "Node.js", "CSS", "TypeScript", "AWS"],
         preferredLocations: ["New York", "San Francisco", "Remote"],
+        education: [
+          {
+            degree: "Bachelor of Science in Computer Science",
+            institution: "MIT",
+            graduationYear: 2020
+          }
+        ],
+        experience: [
+          {
+            title: "Senior Frontend Developer",
+            company: "Tech Corp",
+            duration: "2020-present"
+          }
+        ],
         jobApplications: [
-          { jobId: 1001, status: "Applied" },
-          { jobId: 1003, status: "Interview Scheduled" }
-        ]
+          { 
+            jobId: 1001, 
+            status: "Applied",
+            companyName: "Google",
+            position: "Senior Developer",
+            appliedDate: "2024-01-15"
+          },
+          { 
+            jobId: 1003, 
+            status: "Interview Scheduled",
+            companyName: "Microsoft",
+            position: "Tech Lead",
+            appliedDate: "2024-01-10"
+          }
+        ],
+        user: {
+          name: "John Doe",
+          email: "john.doe@example.com",
+          roles: ["Applicant", "Mentor"],
+          profilePicture: "/api/placeholder/150/150",
+          joinedDate: "2023-12-01",
+          lastActive: "2024-01-20"
+        }
       },
       {
         applicantId: 2,
         name: "Jane Smith",
-        skills: ["Python", "Data Analysis", "SQL", "Machine Learning"],
+        email: "jane.smith@example.com",
+        phone: "+1 (555) 987-6543",
+        skills: ["Python", "Data Analysis", "SQL", "Machine Learning", "TensorFlow", "Scikit-learn"],
         preferredLocations: ["Austin", "Seattle", "Remote"],
+        education: [
+          {
+            degree: "Master in Data Science",
+            institution: "Stanford University",
+            graduationYear: 2021
+          }
+        ],
+        experience: [
+          {
+            title: "Data Scientist",
+            company: "AI Solutions Inc",
+            duration: "2021-present"
+          }
+        ],
         jobApplications: [
-          { jobId: 1002, status: "Applied" },
-          { jobId: 1007, status: "Rejected" }
-        ]
+          { 
+            jobId: 1002, 
+            status: "Applied",
+            companyName: "Amazon",
+            position: "Data Scientist",
+            appliedDate: "2024-01-18"
+          },
+          { 
+            jobId: 1007, 
+            status: "Rejected",
+            companyName: "Meta",
+            position: "ML Engineer",
+            appliedDate: "2024-01-05"
+          }
+        ],
+        user: {
+          name: "Jane Smith",
+          email: "jane.smith@example.com",
+          roles: ["Applicant", "Employer"],
+          profilePicture: "/api/placeholder/150/150",
+          joinedDate: "2023-11-15",
+          lastActive: "2024-01-21"
+        }
+      }
+    ],
+    mentors: [
+      {
+        mentorId: 1,
+        expertise: "Frontend Development",
+        yearsOfExperience: 8,
+        availability: "20 hours/week",
+        mentees: 5,
+        rating: 4.8
       },
       {
-        applicantId: 3,
-        name: "Michael Johnson",
-        skills: ["Marketing", "SEO", "Content Creation", "Google Analytics"],
-        preferredLocations: ["Chicago", "Boston", "Remote"],
-        jobApplications: [
-          { jobId: 1003, status: "Applied" },
-          { jobId: 1010, status: "Hired" }
-        ]
+        mentorId: 2,
+        expertise: "Data Science",
+        yearsOfExperience: 6,
+        availability: "15 hours/week",
+        mentees: 3,
+        rating: 4.9
+      }
+    ],
+    employers: [
+      {
+        employerId: 1,
+        companyName: "Tech Corp",
+        website: "https://techcorp.example.com",
+        industry: "Software Development",
+        companySize: "500-1000",
+        locations: ["New York", "San Francisco"]
       },
       {
-        applicantId: 4,
-        name: "Emily Brown",
-        skills: ["Java", "Spring Boot", "Kubernetes", "Docker"],
-        preferredLocations: ["Los Angeles", "Denver", "Remote"],
-        jobApplications: [
-          { jobId: 1001, status: "Rejected" },
-          { jobId: 1009, status: "Interview Scheduled" }
-        ]
-      },
-      {
-        applicantId: 5,
-        name: "Sophia Davis",
-        skills: ["UI/UX Design", "Adobe XD", "Figma", "User Research"],
-        preferredLocations: ["San Diego", "New York", "Remote"],
-        jobApplications: [
-          { jobId: 1005, status: "Hired" },
-          { jobId: 1008, status: "Applied" }
-        ]
+        employerId: 2,
+        companyName: "AI Solutions Inc",
+        website: "https://aisolutions.example.com",
+        industry: "Artificial Intelligence",
+        companySize: "100-500",
+        locations: ["Austin", "Seattle"]
       }
     ]
   };
@@ -205,11 +283,7 @@ const UserProfile = () => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        // const response = await apiClient.get("http://localhost:8080/applicants/profile");
-        // console.log("API Response:", response.data); // Add this for debugging
-        // if (response.data) {
-        //   setProfile(response.data.data);
-        // }
+        // Simulating API call with dummy data
         setProfile(dummyData);
         setLoading(false);
       } catch (error) {
