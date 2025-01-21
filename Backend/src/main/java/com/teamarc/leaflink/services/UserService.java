@@ -1,14 +1,16 @@
 package com.teamarc.leaflink.services;
 
-
-
 import com.teamarc.leaflink.dto.OnBoardNewEmployerDTO;
+import com.teamarc.leaflink.dto.OnBoardNewFounderDTO;
+import com.teamarc.leaflink.dto.OnBoardNewInvestorDTO;
 import com.teamarc.leaflink.dto.OnboardNewMentorDTO;
+import com.teamarc.leaflink.entity.OnBoardNewInvestor;
 import com.teamarc.leaflink.entity.OnboardNewEmployer;
 import com.teamarc.leaflink.entity.OnboardNewMentor;
 import com.teamarc.leaflink.entity.User;
 import com.teamarc.leaflink.entity.enums.Role;
 import com.teamarc.leaflink.exceptions.ResourceNotFoundException;
+import com.teamarc.leaflink.repository.OnBoardNewInvestorRepository;
 import com.teamarc.leaflink.repository.OnboardNewEmployerRepository;
 import com.teamarc.leaflink.repository.OnboardNewMentorRepository;
 import com.teamarc.leaflink.repository.UserRepository;
@@ -27,7 +29,7 @@ public class UserService implements UserDetailsService {
     private final OnboardNewMentorRepository onboardNewMentorRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-
+    private final OnBoardNewInvestorRepository onBoardNewInvestorRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,5 +50,13 @@ public class UserService implements UserDetailsService {
 
     public User loadUserByRole(Role role) {
         return userRepository.findByRoles(role);
+    }
+
+    public void requestInvestorOnboard(OnBoardNewInvestorDTO investorRequestDTO) {
+        onBoardNewInvestorRepository.save(modelMapper.map(investorRequestDTO, OnBoardNewInvestor.class));
+    }
+
+    public void requestFounderOnboard(OnBoardNewFounderDTO founderRequestDTO) {
+
     }
 }
