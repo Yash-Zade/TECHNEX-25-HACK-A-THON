@@ -152,7 +152,7 @@ const Home = () => {
                 </p>
                 <button 
                   className="px-8 py-4 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 hover:scale-105 transition-all duration-300"
-                  onClick={() => handleNavigate('/register')}
+                  onClick={() => handleNavigate('/signup')}
                 >
                   Join Now
                 </button>
