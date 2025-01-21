@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-
-    List<Message> findAllMessagesByRoomId(Long roomId);
-}
+    @Query("SELECT m FROM Message m WHERE m.chatRoom.roomId = :roomId")
+    List<Message> findAllMessagesByRoomId(@Param("roomId") Long roomId);}

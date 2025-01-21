@@ -31,6 +31,8 @@ public class ChatController {
         return chatService.sendMessage(request, roomId);
     }
 
+
+
     @MessageMapping("/privateMessage")
     @SendTo("/private")
     public PrivateMessageDTO sendPrivateMessage(@RequestBody PrivateMessageRequest request) {
