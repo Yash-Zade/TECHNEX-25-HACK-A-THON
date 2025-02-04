@@ -25,6 +25,7 @@ import AddStartup from "./components/StartUp/AddStartup.jsx";
 import Protected from "./components/Auth/Protected.jsx";
 import FounderDashboard from "./components/Founder/FounderDashboard.jsx";
 import JobApplicationForm from "./components/Jobs/ApplyJob.jsx";
+import CollegeDashboard from "./components/College/CollegeDashboard.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -167,6 +168,11 @@ const router = createBrowserRouter([
 
           path:"/FounderDashboard",
           element:<FounderDashboard/>
+        },
+        {
+
+          path:"/CollegeDashboard",
+          element:<CollegeDashboard/>
         }
 
     ]
