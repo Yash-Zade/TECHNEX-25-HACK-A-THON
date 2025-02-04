@@ -130,7 +130,7 @@ const Startup = () => {
     location: "San Francisco, CA",
     employeeCount: "50-100",
     fundingStage: "Series A",
-    totalFunding: "$12.5M",
+    totalFunding: "₹12.5M",
     industry: ["CleanTech", "Energy", "Hardware"],
     website: "https://ecotechsolutions.example",
     email: "contact@ecotechsolutions.example",
@@ -139,7 +139,7 @@ const Startup = () => {
       twitter: "@ecotech"
     },
     metrics: {
-      revenue: "$2.5M ARR",
+      revenue: "₹2.5M ARR",
       growth: "+150% YoY",
       customers: "28 Enterprise"
     },
