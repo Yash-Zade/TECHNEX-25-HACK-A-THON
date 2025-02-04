@@ -24,6 +24,7 @@ import Startup from "./components/StartUp/Startup.jsx";
 import AddStartup from "./components/StartUp/AddStartup.jsx";
 import Protected from "./components/Auth/Protected.jsx";
 import FounderDashboard from "./components/Founder/FounderDashboard.jsx";
+import JobApplicationForm from "./components/Jobs/ApplyJob.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -110,7 +111,7 @@ const router = createBrowserRouter([
           path:"/apply/:jobId",
           element:(
             // <Protected>
-              <JobPostingForm/>
+              <JobApplicationForm/>
             // </Protected>
           )
           },

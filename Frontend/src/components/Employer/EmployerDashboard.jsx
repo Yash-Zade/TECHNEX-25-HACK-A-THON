@@ -13,6 +13,7 @@ import {
 import WalletComponent from "../Wallet/Wallet";
 import apiClient from "../Auth/ApiClient";
 import EmployerProfile from "./EmployerProfile";
+import { Link } from "react-router-dom";
 // Background gradient orb component
 const GradientOrb = ({ className }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -284,7 +285,9 @@ const EmployerDashboard = () => {
               <h2 className="text-xl font-semibold">My Job Listings</h2>
             </div>
             <button className="px-4 py-2 bg-green-500 hover:bg-green-600 rounded-lg transition-colors text-sm font-medium">
-              Post New Job
+              <Link to="/addJob">
+                Post New Job
+              </Link>
             </button>
           </div>
 

@@ -280,20 +280,20 @@ const UserProfile = () => {
   };
   
 
-  // useEffect(() => {
-  //   const getProfile = async () => {
-  //     try {
-  //       // Simulating API call with dummy data
-  //       setProfile(dummyData);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching profile:", error);
-  //       setError(error.message);
-  //       setLoading(false);
-  //     }
-  //   };
-  //   getProfile();
-  // }, []);
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        // Simulating API call with dummy data
+        setProfile(dummyData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+    getProfile();
+  }, []);
 
   useEffect(() => {
     async function GetProfile() {
