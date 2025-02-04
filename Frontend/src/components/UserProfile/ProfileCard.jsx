@@ -364,12 +364,7 @@ const UserProfile = () => {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Applicant Profile
             </h1>
-<button 
-                  className="px-8 py-4 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 hover:scale-105 transition-all duration-300"
-                  onClick={() => handleNavigate('/AdminDashboard')}
-                >
-                 Admin Dashboard
-                </button>
+
             <div className="flex items-center space-x-4 w-full md:w-auto">
               <WalletComponent />
               <div className="relative">
@@ -473,6 +468,12 @@ const UserProfile = () => {
               
             </div>
           </div>
+<button 
+                  className="px-8 py-4 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 hover:scale-105 transition-all duration-300"
+                  onClick={() => handleNavigate('/AdminDashboard')}
+                >
+                 Admin Dashboard
+                </button>
         </div>
       </div>
 
