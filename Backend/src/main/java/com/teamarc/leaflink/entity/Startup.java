@@ -29,7 +29,6 @@ public class Startup {
     private String industry;
     private Double totalMoneyToRaise;
     private Double totalMoneyRaised;
-    private Integer employeeCount;
 
     @ManyToOne
     @JoinColumn(name = "founder_id", nullable = false)

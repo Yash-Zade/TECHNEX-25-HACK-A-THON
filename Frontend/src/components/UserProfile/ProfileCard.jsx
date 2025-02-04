@@ -507,6 +507,11 @@ const UserProfile = () => {
                     College Dashboard
                   </Link>
                 </button>
+                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4">
+                  <Link to="/FounderDashboard">
+                    Founder Dashboard
+                  </Link>
+                </button>
               </div>
             </div>
           </div>
