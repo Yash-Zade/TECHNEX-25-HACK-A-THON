@@ -78,7 +78,7 @@ const router = createBrowserRouter([
           ),
         },
         {
-          path: "/MentorDashboard/:mentorId",
+          path: "/MentorDashboard/",
           element: (
             // <Protected>
               <MentorDashboard />

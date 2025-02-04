@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, X } from "lucide-react";
 import WalletComponent from "../Wallet/Wallet.jsx";
 import apiClient from "../Auth/ApiClient";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const GradientOrb = ({ className }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -358,117 +358,150 @@ const UserProfile = () => {
       <GradientOrb className="w-96 h-96 bg-blue-500 right-0 bottom-0" />
       <GradientOrb className="w-64 h-64 bg-pink-500 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
 
-      <div className="w-full max-w-6xl">
-        <div className="backdrop-blur-xl bg-gray-900/30 rounded-3xl p-4 md:p-6 shadow-2xl border border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 space-y-4 md:space-y-0">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Applicant Profile
-            </h1>
+      <div className="grid grid-row-2 gap-2 mt-20">
+        <div className=" row-span-1">
+          <div className="backdrop-blur-xl bg-gray-900/30 rounded-3xl p-4 md:p-6 shadow-2xl border border-white/20">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 space-y-4 md:space-y-0">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Applicant Profile
+              </h1>
 
-            <div className="flex items-center space-x-4 w-full md:w-auto">
-              <WalletComponent />
-              <div className="relative">
-                <button
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 rounded-lg px-4 py-2 transition-colors"
-                >
-                  <span>Select Role</span>
-                  <ChevronDown size={20} />
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-xl border border-white/10 overflow-hidden">
-                    <button
-                      onClick={() => handleRoleSelect("mentor")}
-                      className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors"
-                    >
-                      Become a Mentor
-                    </button>
-                    <button
-                      onClick={() => handleRoleSelect("employer")}
-                      className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors"
-                    >
-                      Register as Employer
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <h2 className="text-xl font-semibold mb-4">Personal Information</h2>
-                <div className="space-y-2 flex flex-col justify-start">
-                  <p><span className="text-white/60">Name:</span> {name}</p>
-                  <p><span className="text-white/60">Email:</span> {email}</p>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="space-y-4">
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <h2 className="text-xl font-semibold mb-4">Skills</h2>
-                <div className="flex flex-wrap gap-2">
-                  {skills.length>0 && skills.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="bg-white/10 rounded-full px-3 py-1 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  {skills.length === 0 && <p className="w-full flex justify-center items-center">No skills specified</p>}
-                </div>
-              </div>
-              
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <h2 className="text-xl font-semibold mb-4">Preferred Locations</h2>
-                <div className="space-y-2">
-                  {preferredLocations.length > 0 ? (
-                    preferredLocations.map((location, index) => (
-                      <p key={index}>{location}</p>
-                    ))
-                  ) : (
-                    <p>No preferred locations specified</p>
+              <div className="flex items-center space-x-4 w-full md:w-auto">
+                <WalletComponent />
+                <div className="relative">
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 rounded-lg px-4 py-2 transition-colors"
+                  >
+                    <span>Select Role</span>
+                    <ChevronDown size={20} />
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-xl border border-white/10 overflow-hidden">
+                      <button
+                        onClick={() => handleRoleSelect("mentor")}
+                        className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors"
+                      >
+                        Become a Mentor
+                      </button>
+                      <button
+                        onClick={() => handleRoleSelect("employer")}
+                        className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors"
+                      >
+                        Register as Employer
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
+            </div>
 
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <h2 className="text-xl font-semibold mb-4">Current Role</h2>
-                <div className="flex flex-col justify-start">
-                {roles.map((roleItem, index) => (
-                  <p key={index} className="capitalize">{roleItem || "No role selected"}</p>
-                ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                  <h2 className="text-xl font-semibold mb-4">Personal Information</h2>
+                  <div className="space-y-2 flex flex-col justify-start">
+                    <p><span className="text-white/60">Name:</span> {name}</p>
+                    <p><span className="text-white/60">Email:</span> {email}</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                  <h2 className="text-xl font-semibold mb-4">Skills</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.length>0 && skills.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="bg-white/10 rounded-full px-3 py-1 text-sm"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                    {skills.length === 0 && <p className="w-full flex justify-center items-center">No skills specified</p>}
+                  </div>
                 </div>
                 
-              </div>
-              {roles.length >1 && (
-                  <div className="flex">
-                  {roles.map((roleItem, index) =>(
-                    <div key={index} className="bg-white/5 rounded-xl pt-2 pb-2 border border-white/10 w-2/4 m-4">
-                    {roleItem === "Mentor" && (
-                      <button onClick={() => handleMentorRole("mentor")}>
-                        Go to Mentor Profile
-                      </button>
+                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                  <h2 className="text-xl font-semibold mb-4">Preferred Locations</h2>
+                  <div className="space-y-2">
+                    {preferredLocations.length > 0 ? (
+                      preferredLocations.map((location, index) => (
+                        <p key={index}>{location}</p>
+                      ))
+                    ) : (
+                      <p>No preferred locations specified</p>
                     )}
-                    {
-                      roleItem ==="Employer" && (
-                        <button onClick={() => handleEmployerRole("employer")}>
-                          Go to Employer Profile
-                        </button>
-                    )}  
-                    
                   </div>
+                </div>
+
+                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                  <h2 className="text-xl font-semibold mb-4">Current Role</h2>
+                  <div className="flex flex-col justify-start">
+                  {roles.map((roleItem, index) => (
+                    <p key={index} className="capitalize">{roleItem || "No role selected"}</p>
                   ))}
                   </div>
-              )}
-              
+                  
+                </div>
+                {roles.length >1 && (
+                    <div className="flex">
+                    {roles.map((roleItem, index) =>(
+                      <div key={index} className="bg-white/5 rounded-xl pt-2 pb-2 border border-white/10 w-2/4 m-4">
+                      {roleItem === "Mentor" && (
+                        <button onClick={() => handleMentorRole("mentor")}>
+                          Go to Mentor Profile
+                        </button>
+                      )}
+                      {
+                        roleItem ==="Employer" && (
+                          <button onClick={() => handleEmployerRole("employer")}>
+                            Go to Employer Profile
+                          </button>
+                      )}  
+                      
+                    </div>
+                    ))}
+                    </div>
+                )}
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div className="row-span-1">
+          <div className="backdrop-blur-xl bg-gray-900/30 rounded-3xl p-4 md:p-6 shadow-2xl border border-white/20">
+            <div className="">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Dashboards
+              </h1>
+              <div className="grid grid-cols-2 gap-8 mt-4">
+                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4" >
+                  <Link to="/employerdashboard">
+                    Employer Dashboard
+                  </Link>
+                </button>
+                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4" >
+                <Link to="/AdminDashboard">
+                    Admin Dashboard
+                  </Link>
+                </button>
+                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4">
+                  <Link to="/MentorDashboard/">
+                    Mentor Dashboard
+                  </Link>
+                </button>
+                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4">
+                  <Link to="/">
+                    College Dashboard
+                  </Link>
+                </button>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
 
