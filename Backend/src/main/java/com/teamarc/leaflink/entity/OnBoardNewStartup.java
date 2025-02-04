@@ -3,8 +3,11 @@ package com.teamarc.leaflink.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -15,35 +18,36 @@ public class OnBoardNewStartup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
-
-    @Column(length = 5000)
     private String description;
-
-    @Column(nullable = false)
-    private String location;
-
+    private String email;
     private String website;
-
-    private String logo;
-
-    @Column(nullable = false)
-    private Double fundingGoal;
-
-    private Double currentValuation;
-
     private String industry;
+    private Double totalMoneyToRaise;
+    private Double totalMoneyRaised;
 
-    private LocalDate foundingDate;
+    @ManyToOne
+    @JoinColumn(name = "founder_id", nullable = false)
+    private OnBoardNewFounder founder;
 
-    @OneToOne
-    private Founder founder;
+    @OneToMany(mappedBy = "onBoardNewStartup", cascade = CascadeType.ALL)
+    private List<Investment> investments;
 
     @ManyToMany
+    @JoinTable(
+            name = "startup_investors",
+            joinColumns = @JoinColumn(name = "startup_id"),
+            inverseJoinColumns = @JoinColumn(name = "investor_id")
+    )
     private List<Investor> investors;
 
     @OneToMany
-    private List<Investment> investments;
+    private List<Applicant> teamMembers;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
 }

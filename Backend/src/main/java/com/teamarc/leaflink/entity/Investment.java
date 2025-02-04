@@ -31,4 +31,12 @@ public class Investment {
 
     @OneToOne(mappedBy = "investment", cascade = CascadeType.ALL)
     private WalletTransaction payment;
+
+    @ManyToOne
+    @JoinColumn(name = "on_board_new_investor_id", nullable = false)
+    private OnBoardNewInvestor onBoardNewInvestor;
+
+    @ManyToOne
+    @JoinColumn(name = "on_board new startup_id", nullable = false)
+    private OnBoardNewStartup onBoardNewStartup;
 }
