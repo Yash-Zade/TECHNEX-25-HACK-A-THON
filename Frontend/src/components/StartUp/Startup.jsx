@@ -14,6 +14,7 @@ import {
   TrendingUp,
   X
 } from 'lucide-react';
+import apiClient from '../Auth/ApiClient';
 
 const CompanyCard = ({ icon: Icon, title, value }) => (
   <div className="flex items-center gap-3">
@@ -59,11 +60,11 @@ const Modal = ({ isOpen, onClose, children }) => {
   );
 };
 
-const InvestmentForm = ({ startupData, onSubmit }) => {
-  const [amount, setAmount] = useState(startupData.investment.minAmount);
+const InvestmentForm = ({ dummystartupData, onSubmit }) => {
+  const [amount, setAmount] = useState(dummystartupData.investment.minAmount);
   
   const calculateEquity = (investAmount) => {
-    const percentage = ((investAmount / parseInt(startupData.investment.valuation.replace('M', '000000'))) * 100).toFixed(3);
+    const percentage = ((investAmount / parseInt(dummystartupData.investment.valuation.replace('M', '000000'))) * 100).toFixed(3);
     return `${percentage}%`;
   };
 
@@ -71,11 +72,11 @@ const InvestmentForm = ({ startupData, onSubmit }) => {
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-gray-400 mb-2">
-          Investment Amount (Min: ${startupData.investment.minAmount.toLocaleString()})
+          Investment Amount (Min: ${dummystartupData.investment.minAmount.toLocaleString()})
         </label>
         <input
           type="number"
-          min={startupData.investment.minAmount}
+          min={dummystartupData.investment.minAmount}
           step={1000}
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
@@ -118,8 +119,8 @@ const InvestmentProgress = ({ raised, target }) => {
 const Startup = () => {
   const [showInvestModal, setShowInvestModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  
-  const startupData = {
+  const [startupData,setStartupData]=useState({})
+  const dummystartupData = {
     id: 1,
     name: "EcoTech Solutions",
     logo: "/api/placeholder/64/64",
@@ -163,7 +164,14 @@ const Startup = () => {
       }
     ]
   };
-
+  useEffect(() => {
+    async function GetProfile(){
+      const profile=await apiClient.get()
+      setStartupData(profile)
+    }
+    GetProfile()
+  }, [])
+  
   const handleInvestmentSubmit = (e) => {
     e.preventDefault();
     setShowSuccess(true);
@@ -181,13 +189,13 @@ const Startup = () => {
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-12">
             <div className="flex items-center gap-6">
               {/* <img 
-                src={startupData.logo} 
-                alt={`${startupData.name} logo`}
+                src={dummystartupData.logo} 
+                alt={`${dummystartupData.name} logo`}
                 className="w-20 h-20 rounded-xl bg-gray-800"
               /> */}
               <div>
-                <h1 className="text-3xl font-bold text-white">{startupData.name}</h1>
-                <p className="text-gray-400 text-lg mt-2">{startupData.shortDescription}</p>
+                <h1 className="text-3xl font-bold text-white">{dummystartupData.name}</h1>
+                <p className="text-gray-400 text-lg mt-2">{dummystartupData.shortDescription}</p>
               </div>
             </div>
             
@@ -215,14 +223,14 @@ const Startup = () => {
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                 <h2 className="text-2xl font-semibold text-white mb-6">Investment Progress</h2>
                 <InvestmentProgress 
-                  raised={startupData.investment.raised}
-                  target={startupData.investment.target}
+                  raised={dummystartupData.investment.raised}
+                  target={dummystartupData.investment.target}
                 />
               </div>
 
               {/* Metrics */}
               <div className="grid sm:grid-cols-3 gap-4">
-                {Object.entries(startupData.metrics).map(([key, value]) => (
+                {Object.entries(dummystartupData.metrics).map(([key, value]) => (
                   <MetricCard key={key} title={key} value={value} />
                 ))}
               </div>
@@ -231,7 +239,7 @@ const Startup = () => {
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-4">About</h2>
                 <p className="text-gray-400 leading-relaxed text-lg">
-                  {startupData.longDescription}
+                  {dummystartupData.longDescription}
                 </p>
               </div>
 
@@ -239,7 +247,7 @@ const Startup = () => {
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-4">Leadership Team</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  {startupData.team.map((member) => (
+                  {dummystartupData.team.map((member) => (
                     <TeamMemberCard key={member.name} {...member} />
                   ))}
                 </div>
@@ -252,11 +260,11 @@ const Startup = () => {
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                 <h2 className="text-2xl font-semibold text-white mb-6">Company Details</h2>
                 <div className="space-y-6">
-                  <CompanyCard icon={Calendar} title="Founded" value={startupData.founded} />
-                  <CompanyCard icon={Users} title="Team Size" value={startupData.employeeCount} />
-                  <CompanyCard icon={DollarSign} title="Total Funding" value={startupData.totalFunding} />
-                  <CompanyCard icon={Briefcase} title="Stage" value={startupData.fundingStage} />
-                  <CompanyCard icon={Building} title="Location" value={startupData.location} />
+                  <CompanyCard icon={Calendar} title="Founded" value={dummystartupData.founded} />
+                  <CompanyCard icon={Users} title="Team Size" value={dummystartupData.employeeCount} />
+                  <CompanyCard icon={DollarSign} title="Total Funding" value={dummystartupData.totalFunding} />
+                  <CompanyCard icon={Briefcase} title="Stage" value={dummystartupData.fundingStage} />
+                  <CompanyCard icon={Building} title="Location" value={dummystartupData.location} />
                 </div>
               </div>
 
@@ -264,7 +272,7 @@ const Startup = () => {
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                 <h2 className="text-2xl font-semibold text-white mb-4">Industry Focus</h2>
                 <div className="flex flex-wrap gap-2">
-                  {startupData.industry.map((tag) => (
+                  {dummystartupData.industry.map((tag) => (
                     <span 
                       key={tag}
                       className="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-full text-sm border border-emerald-500/20"
@@ -281,18 +289,18 @@ const Startup = () => {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Globe className="w-5 h-5 text-emerald-400" />
-                    <a href={startupData.website} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      {startupData.website.replace('https://', '')}
+                    <a href={dummystartupData.website} className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      {dummystartupData.website.replace('https://', '')}
                     </a>
                   </div>
                   <div className="flex gap-4">
-                    <a href={`mailto:${startupData.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
+                    <a href={`mailto:${dummystartupData.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
                       <Mail className="w-5 h-5" />
                     </a>
-                    <a href={`https://linkedin.com/company/${startupData.socialMedia.linkedin}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
+                    <a href={`https://linkedin.com/company/${dummystartupData.socialMedia.linkedin}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
                       <LinkedinIcon className="w-5 h-5" />
                     </a>
-                    <a href={`https://twitter.com/${startupData.socialMedia.twitter}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
+                    <a href={`https://twitter.com/${dummystartupData.socialMedia.twitter}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
                       <Twitter className="w-5 h-5" />
                     </a>
                   </div>
@@ -314,7 +322,7 @@ const Startup = () => {
           </button>
           
           <h2 className="text-2xl font-bold text-white mb-2">
-            Invest in {startupData.name}
+            Invest in {dummystartupData.name}
           </h2>
           <p className="text-gray-400 mb-6">
             Join us in revolutionizing the clean energy sector
@@ -324,24 +332,24 @@ const Startup = () => {
             <div className="grid grid-cols-2 gap-4 bg-gray-800/50 p-4 rounded-lg">
               <div>
                 <p className="text-gray-400">Valuation</p>
-                <p className="text-white font-semibold">${startupData.investment.valuation}</p>
+                <p className="text-white font-semibold">${dummystartupData.investment.valuation}</p>
               </div>
               <div>
                 <p className="text-gray-400">Round</p>
-                <p className="text-white font-semibold">{startupData.investment.currentRound}</p>
+                <p className="text-white font-semibold">{dummystartupData.investment.currentRound}</p>
               </div>
               <div>
                 <p className="text-gray-400">Raised</p>
-                <p className="text-white font-semibold">${startupData.investment.raised}M</p>
+                <p className="text-white font-semibold">${dummystartupData.investment.raised}M</p>
               </div>
               <div>
                 <p className="text-gray-400">Target</p>
-                <p className="text-white font-semibold">${startupData.investment.target}M</p>
+                <p className="text-white font-semibold">${dummystartupData.investment.target}M</p>
               </div>
             </div>
             
             <InvestmentForm 
-              startupData={startupData}
+              dummystartupData={dummystartupData}
               onSubmit={handleInvestmentSubmit}
             />
             

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import apiClient from '../Auth/ApiClient';
 
 const JobApplicationForm = () => {
   const [skills, setSkills] = useState([]);
@@ -43,7 +44,13 @@ const JobApplicationForm = () => {
       addLocation();
     }
   };
-
+  const handleSubmit=async()=>{
+    const data={...skills,...locations}
+    const isSubmit=await apiClient.post(`applicants/jobs/${jobId}/apply`,data)
+    if(isSubmit.applicationStatus=="APPLIED"){
+      console.log("Submitted")
+    }
+  }
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -102,7 +109,7 @@ const JobApplicationForm = () => {
           Job Application
         </motion.h1>
         
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Resume Upload */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}

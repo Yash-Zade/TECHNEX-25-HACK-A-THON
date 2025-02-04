@@ -11,6 +11,8 @@ import {
   Users,
 } from "lucide-react";
 import WalletComponent from "../Wallet/Wallet";
+import apiClient from "../Auth/ApiClient";
+import EmployerProfile from "./EmployerProfile";
 // Background gradient orb component
 const GradientOrb = ({ className }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -103,15 +105,25 @@ const EmployerDashboard = () => {
         roles: ["ROLE_EMPLOYER"],
       },
     };
-
+    // async function GetProfile(){
+    //   const EmployerProfile=await apiClient.get(`${import.meta.env.BASE_URL}/employers/profile/${id}`)
+    //   setProfile(EmployerProfile.data)
+    //   setLoading(false)
+    // }
+    // GetProfile()
     setTimeout(() => {
       setProfile(dummyProfile);
       setLoading(false);
     }, 500);
-  }, []);
+  }, [profile]);
 
   // Fetch jobs
   useEffect(() => {
+    // async function GetJobs() {
+    //   const Jobs = await apiClient.get(`${import.meta.env.BASE_URL}/employers/jobs/${id}`)
+    //   setJobs(Jobs.data);
+    // }
+    // GetJobs()
     const jobTitles = [
       "Senior Frontend Developer",
       "Backend Engineer",
@@ -139,10 +151,10 @@ const EmployerDashboard = () => {
     }, 500);
   }, [currentPage]);
 
-  const handleViewApplications = (job) => {
+  const handleViewApplications = async(job) => {
     setSelectedJob(job);
 
-    // Dummy applications data
+    // // Dummy applications data
     const dummyApplications = Array.from(
       { length: job.applicationCount },
       (_, index) => ({
@@ -153,8 +165,8 @@ const EmployerDashboard = () => {
         ],
       })
     );
-
-    setApplications(dummyApplications);
+    // const Applications=await apiClient.get(`employers/jobs/${job.id}/applications`)
+    // setApplications(Applications.data);
     setIsApplicationsModalOpen(true);
   };
 

@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import apiClient from "../Auth/ApiClient";
 // import WalletComponent from "../Wallet/Wallet";
 
 const EmployerProfile = () => {
-  const profile = {
+  const [employerProfile, setEmployerProfile] = useState({});
+  useEffect(() => {
+    async function GetProfile(){
+      const currProfile=await apiClient.get(`/employers/profile/${id}`)
+      setEmployerProfile(currProfile)
+    }
+    GetProfile()
+  }, [])
+  
+  const dummyProfile = {
     name: "Sarah Johnson",
     email: "sarah.johnson@techcorp.com",
     company: "TechCorp Industries",
@@ -22,22 +32,22 @@ const EmployerProfile = () => {
           <div className="space-y-6 ">
             {/* Name and Email */}
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white">{profile.name}</h2>
-              <p className="text-gray-300">{profile.email}</p>
+              <h2 className="text-2xl font-bold text-white">{dummyProfile.name}</h2>
+              <p className="text-gray-300">{dummyProfile.email}</p>
             </div>
             <div>
               {/* Company Info */}
               <div className="space-y-2">
                 <p className="text-lg font-semibold text-white">
-                  {profile.company}
+                  {dummyProfile.company}
                 </p>
                 <a
-                  href={`https://${profile.website}`}
+                  href={`https://${dummyProfile.website}`}
                   className="text-emerald-300 hover:text-emerald-400 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {profile.website}
+                  {dummyProfile.website}
                 </a>
               </div>
               {/* <WalletComponent /> */}
