@@ -36,5 +36,7 @@ public class Applicant {
     @ElementCollection
     private List<String> preferredLocations;
 
+
+
 }
 
