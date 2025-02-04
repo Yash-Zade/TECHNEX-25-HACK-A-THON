@@ -23,6 +23,7 @@ import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
 import Startup from "./components/StartUp/Startup.jsx";
 import AddStartup from "./components/StartUp/AddStartup.jsx";
 import Protected from "./components/Auth/Protected.jsx";
+import FounderDashboard from "./components/Founder/FounderDashboard.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -160,6 +161,11 @@ const router = createBrowserRouter([
               <JobPostingForm/>
             // </Protected>
             )
+        },
+        {
+
+          path:"/FounderDashboard",
+          element:<FounderDashboard/>
         }
 
     ]
