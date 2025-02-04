@@ -45,8 +45,8 @@ public class Startup {
     )
     private List<Investor> investors;
 
-    @OneToMany(mappedBy = "startup", cascade = CascadeType.ALL)
-    private List<User> teamMembers;
+    @OneToMany
+    private List<Applicant> teamMembers;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
