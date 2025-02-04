@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { Search, ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { Search, ArrowRight, TrendingUp, Users, IndianRupee  } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../Auth/ApiClient';
 
@@ -12,7 +12,7 @@ const startupData = [
     date: "2024-01-20",
     founder: "Dr. Emily Watson",
     traction: "50K+ Users",
-    raised: "$5M",
+    raised: "₹5M",
     growth: "+127% MoM",
     logo: "/api/placeholder/80/80"
   },
@@ -24,7 +24,7 @@ const startupData = [
     date: "2024-01-15",
     founder: "Dr. Robert Kim",
     traction: "30+ Patents",
-    raised: "$3.8M",
+    raised: "₹3.8M",
     growth: "+85% MoM",
     logo: "/api/placeholder/80/80"
   },
@@ -36,7 +36,7 @@ const startupData = [
     date: "2024-01-10",
     founder: "Maria González",
     traction: "12 Satellites",
-    raised: "$7.2M",
+    raised: "₹7.2M",
     growth: "+93% MoM",
     logo: "/api/placeholder/80/80"
   }
@@ -152,7 +152,7 @@ const StartupListingMagazine = () => {
                       <span className="text-gray-300">{startup.traction}</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <DollarSign className="text-green-400" size={20} />
+                      <IndianRupee  className="text-green-400" size={20} />
                       <span className="text-gray-300">Raised {startup.raised}</span>
                     </div>
                     <div className="flex items-center gap-3">
