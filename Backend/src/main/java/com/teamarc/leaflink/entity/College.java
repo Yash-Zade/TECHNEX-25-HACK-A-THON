@@ -1,5 +1,6 @@
 package com.teamarc.leaflink.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,23 +9,21 @@ import lombok.Setter;
 
 import java.util.List;
 
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Investor {
+public class College {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String name;
+    private String address;
+    private String email;
+    private String website;
 
-    private Double totalInvestmentAmount;
-
-    @OneToMany(mappedBy = "investor", cascade = CascadeType.ALL)
-    private List<Investment> investments;
+    @OneToMany(mappedBy = "college", cascade = CascadeType.ALL)
+    private List<Student> students;
 }

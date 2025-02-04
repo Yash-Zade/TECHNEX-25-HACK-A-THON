@@ -12,30 +12,23 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Investment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Double amount;
 
     @ManyToOne
     @JoinColumn(name = "investor_id", nullable = false)
     private Investor investor;
 
     @ManyToOne
-    private StartUp startup;
+    @JoinColumn(name = "startup_id", nullable = false)
+    private Startup startup;
 
-    @Column(nullable = false)
-    private Double amount;
-
-    @Column(nullable = false)
-    private Double equity;
-
-    @Column(nullable = false)
-    private LocalDate date;
-
-    @Enumerated(EnumType.STRING)
-    private InvestmentStatus status;
-
+    @OneToOne(mappedBy = "investment", cascade = CascadeType.ALL)
+    private WalletTransaction payment;
 }

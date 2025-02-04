@@ -2,15 +2,13 @@ package com.teamarc.leaflink.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Founder {
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +17,7 @@ public class Founder {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    private String bio;
-
-    @OneToMany(mappedBy = "founder", cascade = CascadeType.ALL)
-    private List<Startup> startups;
+    @ManyToOne
+    @JoinColumn(name = "college_id", nullable = false)
+    private College college;
 }

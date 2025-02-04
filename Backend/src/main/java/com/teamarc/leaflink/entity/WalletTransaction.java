@@ -36,4 +36,9 @@ public class WalletTransaction {
 
     @CurrentTimestamp
     private LocalDateTime timeStamp;
+
+
+    @OneToOne
+    @JoinColumn(name = "investment_id", nullable = false)
+    private Investment investment;
 }
