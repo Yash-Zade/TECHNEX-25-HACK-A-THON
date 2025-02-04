@@ -32,5 +32,8 @@ public class Payment {
     @JoinColumn(name = "session_id")
     private Session session;
 
+    @OneToOne
+    @JoinColumn(name = "investment_id")
+    private Investment investment;
 }
 

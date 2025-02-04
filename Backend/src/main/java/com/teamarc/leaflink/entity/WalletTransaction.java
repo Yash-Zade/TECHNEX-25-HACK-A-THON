@@ -39,6 +39,5 @@ public class WalletTransaction {
 
 
     @OneToOne
-    @JoinColumn(name = "investment_id", nullable = false)
     private Investment investment;
 }
