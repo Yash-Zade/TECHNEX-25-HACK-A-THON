@@ -280,20 +280,28 @@ const UserProfile = () => {
   };
   
 
+  // useEffect(() => {
+  //   const getProfile = async () => {
+  //     try {
+  //       // Simulating API call with dummy data
+  //       setProfile(dummyData);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching profile:", error);
+  //       setError(error.message);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getProfile();
+  // }, []);
+
   useEffect(() => {
-    const getProfile = async () => {
-      try {
-        // Simulating API call with dummy data
-        setProfile(dummyData);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching profile:", error);
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-    getProfile();
-  }, []);
+    async function GetProfile() {
+      const AppllicantProfile= await apiClient.get (`${import.meta.env.VITE_BASE_URL}/applicants/profile`);
+      setProfile(AppllicantProfile.data);
+    }
+    GetProfile();
+  },[profile])
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);

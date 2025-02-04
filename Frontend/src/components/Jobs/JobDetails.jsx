@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import apiClient from '../Auth/ApiClient';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -117,6 +118,14 @@ const JobDetails = () => {
       setLoading(false);
     }, 500);
   }, [jobId]);
+  // useEffect(() => {
+  //   async function GetJob() {
+  //     const JobDetails= await apiClient.get (`${import.meta.env.VITE_BASE_URL}/public/jobs/{id}`);
+  //     setJob(JobDetails.data);
+  //   }
+  //   GetJob();
+  // },[jobId])
+
 
   const handleApply = async (jobId) => {
     navigate(`/apply/${jobId}`);

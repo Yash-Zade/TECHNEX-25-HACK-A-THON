@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import apiClient from '../Auth/ApiClient';
 import { Search, Plus, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -39,11 +40,10 @@ const JobCard = ({ job, onClick }) => (
       <span>Posted by: {job.company || 'Unknown'}</span>
       {/* <span>{job.location || 'No location specified'}</span> */}
       <span
-        className={`px-2 py-1 rounded-full ${
-          job.jobStatus === 'Active'
+        className={`px-2 py-1 rounded-full ${job.jobStatus === 'Active'
             ? 'bg-emerald-500/20 text-emerald-300'
             : 'bg-blue-800 text-white'
-        }`}
+          }`}
       >
         {job.jobStatus || 'OPEN'}
       </span>
@@ -52,7 +52,7 @@ const JobCard = ({ job, onClick }) => (
 );
 
 const JobBoard = () => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState([null]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
@@ -143,47 +143,56 @@ const JobBoard = () => {
     }
   ];
 
-  const date= new Date();
+  const date = new Date();
 
-  useEffect(() => {
-    // const fetchJobs = async () => {
-    //   setLoading(true);
-    //   setError(null);
-    //   try {
-    //     const response = await apiClient.get(`http://localhost:8080/public/jobs`,);
+    useEffect(() => {
+      // const fetchJobs = async () => {
+      //   setLoading(true);
+      //   setError(null);
+      //   try {
+      //     const response = await apiClient.get(`http://localhost:8080/public/jobs`,);
 
-    //     console.log("response",response);
-    //     if (response.data?.data) {
-    //       const { content, totalPages } = response.data.data;
-    //       setJobs( dummyJobs);
-    //       setTotalPages(totalPages || 0);
-    //     }
-    //   } catch (error) {
-    //     console.error('Error fetching jobs:', error);
-    //     setError('Failed to fetch jobs. Please try again later.');
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
+      //     console.log("response",response);
+      //     if (response.data?.data) {
+      //       const { content, totalPages } = response.data.data;
+      //       setJobs( dummyJobs);
+      //       setTotalPages(totalPages || 0);
+      //     }
+      //   } catch (error) {
+      //     console.error('Error fetching jobs:', error);
+      //     setError('Failed to fetch jobs. Please try again later.');
+      //   } finally {
+      //     setLoading(false);
+      //   }
+      // };
 
-    // fetchJobs();
-    const fetchJobs=async()=>{
-        setJobs( dummyJobs);
-        setTotalPages(totalPages);
-        setLoading(false);
-    }
-    fetchJobs();
-}, [page, searchQuery]);
+      // fetchJobs();
+      const fetchJobs=async()=>{
+          setJobs( dummyJobs);
+          setTotalPages(totalPages);
+          setLoading(false);
+      }
+      fetchJobs();
+  }, [page, searchQuery]);
+
+  // useEffect(() => {
+  //   async function GetJobs() {
+  //     const JobDetails = await apiClient.get(`${import.meta.env.VITE_BASE_URL}/public/jobs`);
+  //     setJobs(JobDetails.data);
+  //   }
+  //   GetJobs();
+  // }, [page, searchQuery])
+
 
   const handleJobClick = (job) => {
     navigate(`/jobs/${job.jobId}`);
   };
 
   const filteredJobs = searchQuery
-  ? jobs.filter((job) =>
-        job.jobTitle?.toLowerCase().includes(searchQuery.toLowerCase())
+    ? jobs.filter((job) =>
+      job.jobTitle?.toLowerCase().includes(searchQuery.toLowerCase())
     )
-  : jobs;
+    : jobs;
 
 
 
@@ -199,7 +208,7 @@ const JobBoard = () => {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
               Job Board
             </h1>
-            
+
           </div>
 
           <div className="relative">
@@ -235,11 +244,10 @@ const JobBoard = () => {
               <button
                 key={index}
                 onClick={() => setPage(index)}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  page === index
+                className={`px-4 py-2 rounded-lg transition-colors ${page === index
                     ? 'bg-emerald-700/40 text-white'
                     : 'bg-emerald-800/20 text-white/70 hover:bg-emerald-700/30'
-                }`}
+                  }`}
               >
                 {index + 1}
               </button>
