@@ -92,9 +92,9 @@ const FounderDashboard = () => {
             </div>
           </div>
         </div> */}
-
-
       {/* Startups Dashboard */}
+
+    
       <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold text-green-400">My Startups</h2>
@@ -106,6 +106,8 @@ const FounderDashboard = () => {
           </button></Link>
         </div>
 
+       
+
         <div className="space-y-4">
           {startups.map((startup) => (
             <div 
@@ -115,7 +117,9 @@ const FounderDashboard = () => {
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-3">
                   <Briefcase className="text-green-500" />
+                  <Link to={"/startupDetails"}>
                   <h3 className="text-lg font-semibold">{startup.name}</h3>
+                  </Link>
                 </div>
                 <div className="flex space-x-2">
                   <button className="text-green-500 hover:bg-white/10 p-2 rounded-lg">
@@ -138,8 +142,10 @@ const FounderDashboard = () => {
           ))}
         </div>
       </div>
+    
 
       {/* Add Startup Modal */}
+      
       {isAddStartupModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-gray-800 rounded-xl p-6 w-full max-w-md">
@@ -152,6 +158,7 @@ const FounderDashboard = () => {
                 <X size={24} />
               </button>
             </div>
+          
             <div className="space-y-4">
               <input 
                 type="text" 
@@ -188,8 +195,10 @@ const FounderDashboard = () => {
                 Create Startup
               </button>
             </div>
+
           </div>
         </div>
+       
       )}
     </div>
   );
