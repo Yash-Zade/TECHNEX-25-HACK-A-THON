@@ -182,7 +182,7 @@ const FounderDashboard = () => {
             Venture Portfolio
           </h2>
 
-<Link to="/hjkl;'">
+<Link to="/addStartup">
           <button
             
             className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-600 rounded-xl hover:scale-[1.02] transition-transform"

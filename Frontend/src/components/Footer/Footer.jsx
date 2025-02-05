@@ -42,31 +42,6 @@ export default function Footer() {
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-emerald-400 uppercase tracking-wider">Dashboard</h2>
-                            <ul className="text-gray-300">
-                                <li className="mb-4">
-                                    <Link
-                                        to="/employerdashboard"
-                                        className="hover:text-emerald-400 transition-colors duration-300"
-                                     
-                                    >
-                                        Employer Dashboard
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/AdminDashboard" className="hover:text-emerald-400 transition-colors duration-300">
-                                        Admin Dashboard
-                                    </Link>
-
-                                </li>
-<li>
-<Link to="/MentorDashboard/1" className="hover:text-emerald-400 transition-colors duration-300">
-                                        Mentor Dashboard
-                                    </Link>
-</li>
-                            </ul>
-                        </div>
-                        <div>
                             <h2 className="mb-6 text-sm font-semibold text-emerald-400 uppercase tracking-wider">Legal</h2>
                             <ul className="text-gray-300">
                                 <li className="mb-4">
