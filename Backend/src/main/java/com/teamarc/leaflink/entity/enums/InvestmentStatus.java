@@ -1,10 +1,7 @@
 package com.teamarc.leaflink.entity.enums;
 
 public enum InvestmentStatus {
-    PROPOSED,
-    NEGOTIATING,
-    SIGNED,
+    REQUESTED,
     FUNDED,
     DECLINED,
-    EXPIRED
 }

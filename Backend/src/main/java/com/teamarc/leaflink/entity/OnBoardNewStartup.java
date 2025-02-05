@@ -30,8 +30,6 @@ public class OnBoardNewStartup {
     @JoinColumn(name = "founder_id", nullable = false)
     private Founder founder;
 
-    @OneToMany
-    private List<Applicant> teamMembers;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

@@ -4,6 +4,7 @@ import com.teamarc.leaflink.entity.enums.InvestmentStatus;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class InvestmentDTO {
@@ -17,7 +18,7 @@ public class InvestmentDTO {
 
     private Double equity;
 
-    private LocalDate date;
+    private LocalDateTime date;
 
     private InvestmentStatus status;
 
