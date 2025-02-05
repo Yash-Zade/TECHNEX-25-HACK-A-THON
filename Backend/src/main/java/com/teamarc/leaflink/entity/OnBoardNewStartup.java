@@ -28,26 +28,12 @@ public class OnBoardNewStartup {
 
     @ManyToOne
     @JoinColumn(name = "founder_id", nullable = false)
-    private OnBoardNewFounder founder;
-
-    @OneToMany(mappedBy = "onBoardNewStartup", cascade = CascadeType.ALL)
-    private List<Investment> investments;
-
-    @ManyToMany
-    @JoinTable(
-            name = "startup_investors",
-            joinColumns = @JoinColumn(name = "startup_id"),
-            inverseJoinColumns = @JoinColumn(name = "investor_id")
-    )
-    private List<Investor> investors;
+    private Founder founder;
 
     @OneToMany
     private List<Applicant> teamMembers;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 
 }

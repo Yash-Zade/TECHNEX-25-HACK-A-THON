@@ -13,8 +13,7 @@ public class OnBoardNewFounder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long userId;
     private String bio;
 
-    @OneToMany(mappedBy = "founder")
-    private List<OnBoardNewStartup> startups;
 }

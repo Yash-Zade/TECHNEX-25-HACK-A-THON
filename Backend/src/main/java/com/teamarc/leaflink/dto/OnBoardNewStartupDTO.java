@@ -14,7 +14,6 @@ import java.util.List;
 public class OnBoardNewStartupDTO {
 
     private Long id;
-
     private String name;
     private String description;
     private String email;
@@ -22,17 +21,6 @@ public class OnBoardNewStartupDTO {
     private String industry;
     private Double totalMoneyToRaise;
     private Double totalMoneyRaised;
-
     private OnBoardNewFounder founder;
 
-    private List<Investment> investments;
-
-
-    private List<Investor> investors;
-
-    private List<Applicant> teamMembers;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 }

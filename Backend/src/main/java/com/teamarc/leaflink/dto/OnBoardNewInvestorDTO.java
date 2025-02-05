@@ -12,9 +12,6 @@ import java.util.List;
 public class OnBoardNewInvestorDTO {
     private Long id;
     private Long userId;
-
     private String bio;
-
-    private List<Investment> investments;
 
 }

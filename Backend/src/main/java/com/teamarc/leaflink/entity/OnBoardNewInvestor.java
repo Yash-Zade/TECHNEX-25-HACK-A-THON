@@ -15,10 +15,6 @@ public class OnBoardNewInvestor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long userId;
-    private Double totalInvestmentAmount;
-
-    @OneToMany(mappedBy = "onBoardNewInvestor", cascade = CascadeType.ALL)
-    private List<Investment> investments;
+    private String bio;
 }

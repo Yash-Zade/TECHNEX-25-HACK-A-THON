@@ -12,6 +12,4 @@ public class OnBoardNewFounderDTO {
     private Long id;
     private Long userId;
     private String bio;
-
-    private List<Startup> startups;
 }
