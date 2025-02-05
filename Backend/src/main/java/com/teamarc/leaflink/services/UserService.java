@@ -1,16 +1,10 @@
 package com.teamarc.leaflink.services;
 
 import com.teamarc.leaflink.dto.*;
-import com.teamarc.leaflink.entity.OnBoardNewInvestor;
-import com.teamarc.leaflink.entity.OnboardNewEmployer;
-import com.teamarc.leaflink.entity.OnboardNewMentor;
-import com.teamarc.leaflink.entity.User;
+import com.teamarc.leaflink.entity.*;
 import com.teamarc.leaflink.entity.enums.Role;
 import com.teamarc.leaflink.exceptions.ResourceNotFoundException;
-import com.teamarc.leaflink.repository.OnBoardNewInvestorRepository;
-import com.teamarc.leaflink.repository.OnboardNewEmployerRepository;
-import com.teamarc.leaflink.repository.OnboardNewMentorRepository;
-import com.teamarc.leaflink.repository.UserRepository;
+import com.teamarc.leaflink.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +21,9 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final OnBoardNewInvestorRepository onBoardNewInvestorRepository;
+    private final OnBoardNewFounderRepository onBoardNewFounderRepository;
+    private final OnBoardNewStartupRepository onBoardNewStartupRepository;
+    private final ApplicantService applicantService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -54,10 +51,15 @@ public class UserService implements UserDetailsService {
     }
 
     public void requestFounderOnboard(OnBoardNewFounderDTO founderRequestDTO) {
-
+        onBoardNewFounderRepository.save(modelMapper.map(founderRequestDTO, OnBoardNewFounder.class));
     }
 
     public void requestStartupOnboard(OnBoardNewStartupDTO startupRequestDTO) {
+        onBoardNewStartupRepository.save(modelMapper.map(startupRequestDTO, OnBoardNewStartup.class));
+    }
 
+    public void requestApplicantOnboard(Long userId) {
+        User user=userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
+        applicantService.createNewApplicant(user);
     }
 }

@@ -6,10 +6,7 @@ import com.teamarc.leaflink.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/users")
@@ -45,6 +42,12 @@ public class UserController {
     @PostMapping(path = "/request/startup")
     public ResponseEntity<StartUpDTO> requestToBeAStartup(@RequestBody OnBoardNewStartupDTO startupRequestDTO) {
         userService.requestStartupOnboard(startupRequestDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(path = "/request/applicant/{userId}")
+    public ResponseEntity<ApplicantDTO> requestToBeAApplicant(@PathVariable Long userId) {
+        userService.requestApplicantOnboard(userId);
         return ResponseEntity.ok().build();
     }
 
