@@ -149,7 +149,7 @@ export default function ModernNavbar() {
                 <div className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-pointer"
                   onClick={logout}
                 >
-                  Logout
+                  Sign in
                 </div>
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center cursor-pointer transform hover:scale-105 transition-all duration-300"
                   onClick={() => navigate(`/profile/`)}>
